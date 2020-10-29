@@ -3,7 +3,7 @@ import random
 def copyPaper(n:int):
     for m in range(int(n/2), n):
         suc = 0
-        
+
         for i in range(1000):
             tray0 = tray1 = m
 
