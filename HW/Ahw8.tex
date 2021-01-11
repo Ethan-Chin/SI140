@@ -1,0 +1,294 @@
+\documentclass[10.5pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{amsfonts,bm}
+\usepackage{listings}
+\usepackage{graphicx}
+\usepackage[shortlabels]{enumitem}
+\usepackage{tikz}
+\usepackage{extramarks}
+%\usepackage{enumerate}
+\usepackage[margin=1in]{geometry}
+\usepackage{fancyhdr}
+\usepackage{epsfig}
+\usepackage{amsmath}
+\usepackage{float}
+\usepackage{amssymb}
+\usepackage{caption}
+\usepackage{subfigure}
+\usepackage{graphics}
+\usepackage{titlesec}
+\usepackage{mathrsfs}
+\usepackage{amsfonts}
+\usepackage{indentfirst}
+\usepackage{fontspec}
+\usepackage{dashrule}
+\usepackage{ctex}
+\usepackage{algpseudocode}
+%\usepackage{algorithm}
+
+\renewcommand{\baselinestretch}{1.2}
+
+\usepackage{tikz-qtree}
+\usetikzlibrary{graphs}
+\tikzset{every tree node/.style={minimum width=2em,draw,circle},
+	blank/.style={draw=none},
+	edge from parent/.style=
+	{draw,edge from parent path={(\tikzparentnode) -- (\tikzchildnode)}},
+	level distance=1.2cm} 
+\setlength{\parindent}{0pt}
+\setlength{\headheight}{13.6pt}
+\newcommand\question[1]{\vspace{.2in}\hrule\vspace{0.04in}\textbf{Problem\ #1}\vspace{.4em}\hrule\vspace{.10in}}
+\newcommand\Solution{\vspace{.3in}\textbf{Solution:}\vspace{.5em}\hrule\vspace{.08in}\par}
+\newcommand\Answer{\vspace{.2in}\textbf{Answer:}\vspace{.5em}\hrule\vspace{.08in}\par}
+\newcommand\Proof{\vspace{.3in}\textbf{Proof:}\vspace{.5em}\hrule\vspace{.08in}\par}
+\newcommand\minsolution{\vspace{.3in}\textbf{Solution:}\vspace{.4em}\par}
+\newcommand\minanswer{\vspace{.2in}\textbf{Answer:}\vspace{.4em}\par}
+\newcommand\minproof{\vspace{.3in}\textbf{Proof:}\vspace{.4em}\par}
+\renewcommand\part[1]{\vspace{.10in}\textbf{(#1)}}
+\newcommand\algorithm{\vspace{.10in}\textbf{Algorithm: }}
+\newcommand\correctness{\vspace{.10in}\textbf{Correctness: }}
+\newcommand\runtime{\vspace{.10in}\textbf{Running time: }}
+\pagestyle{fancyplain}
+
+\setCJKfamilyfont{Song}[AutoFakeBold]{SimSun}
+\newcommand*{\Song}{\CJKfamily{Song}}
+
+
+
+
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}}
+
+\title{
+	\normalfont \normalsize
+	\begin{figure}[!h]
+	\centering
+	\includegraphics[width=4.8in, keepaspectratio]{logo_red.pdf}\\[1cm]
+		%\caption{}
+	\end{figure}
+	%\huge{\textsc{ShanghaiTech University}} \\ [8pt]
+	\horrule{0.5pt} \\[0.4cm]
+	\Huge SI140 Probability \& Mathematical Statistics\\[0.4cm]
+	\LARGE Homework 8\\
+	\horrule{2pt} \\[1.5cm]
+}
+ 
+\author{\Song{\huge\textbf{陈昱聪}}\\[0.2cm]Chen Yucong\ ><E<>N\\[4.5cm]\textbf{Student ID: 2019533079}\\[0.2cm] 
+\textbf{Email:}\ {\ttfamily chenyc@shanghaitech.edu.cn}\\[0.8cm] \LARGE\textsc{School of Information Science and Technology}\\[0.63cm]
+\texttt{$\circledcirc$ Group\#2\ (TA:曾理)}}
+\date{}
+
+
+\pagestyle{fancy}
+\lhead{SI140 Probability \& Mathematical Statistics}
+\chead{\textbf{Homework 8\ }}
+\rhead{陈昱聪\,2019533079\ \,Due:\,11:59\,am, $23^{\text{th}}$ Nov.}
+\cfoot{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+
+
+\fancypagestyle{firstpage}
+{
+	\renewcommand{\headrulewidth}{0pt}
+	\fancyhf{}
+	\fancyfoot[C]{\thepage}
+}
+
+
+\newcounter{ProblemCounter}
+\newcounter{oldvalue}
+\newcommand{\problem}[2][-1]{
+	\setcounter{oldvalue}{\value{secnumdepth}}
+	\setcounter{secnumdepth}{0}
+	\ifnum#1>-1
+	\setcounter{ProblemCounter}{0}
+	\else
+	\stepcounter{ProblemCounter}
+	\fi
+	\section{Problem \arabic{ProblemCounter}: #2}
+	\setcounter{secnumdepth}{\value{oldvalue}}
+}
+\newcommand{\subproblem}[1]{
+	\setcounter{oldvalue}{\value{section}}
+	\setcounter{section}{\value{ProblemCounter}}
+	\subsection{#1}
+	\setcounter{section}{\value{oldvalue}}
+}
+
+\setmonofont{Consolas}
+\definecolor{blve}{rgb}{0.3372549 , 0.61176471, 0.83921569}
+\definecolor{gr33n}{rgb}{0.29019608, 0.7372549 , 0.64705882}
+\makeatletter
+\lst@InstallKeywords k{class}{classstyle}\slshape{classstyle}{}ld
+\makeatother
+\lstset{language=C++,
+	basicstyle=\ttfamily,
+	keywordstyle=\color{blve}\ttfamily,
+	stringstyle=\color{red}\ttfamily,
+	commentstyle=\color{green}\ttfamily,
+	morecomment=[l][\color{magenta}]{\#},
+	classstyle = \bfseries\color{gr33n}, 
+	tabsize=4
+}
+
+
+\begin{document}
+	
+\maketitle
+\thispagestyle{firstpage}
+\thispagestyle{empty}
+\setcounter{page}{0}
+
+
+
+\question{7.9}
+\Solution{}
+\begin{enumerate}[(a)]
+	\item \begin{align*}
+		p_{X, Y, N}(x, y, n) 
+		&= P(X = x, Y = y, N = n)\\[6pt]
+		&= P(N = n | X = x, Y = y)P(X = x|Y = y)P(Y = y)\\[6pt]
+		&= 1\cdot P(X = x)\cdot P(Y = y)\\[6pt]
+		&= {(1 - p)}^{x+y}p^2
+	\end{align*}\vspace{0.5cm}
+	\item \begin{align*}
+		p_{X, N}(x, n) 
+		&= P(X = x, N = n)\\[6pt]
+		&= P(N = n | X = x)P(X = x)\\[6pt]
+		&= P(Y = n - x)\cdot P(X = x)\\[6pt]
+		&= (1-p)^{n}p^2
+	\end{align*}\vspace{0.5cm}
+	\item 
+	\begin{align*}
+		P(N = n) &= \sum_{x = 0}^{n} P(N = n|X = x)P(X = x)\\[6pt]
+		&= \sum_{x = 0}^{n} P(Y = n - x)P(X = x)\\[6pt]
+		&= (n+1)(1-p)^np^2\\[6pt]
+	\end{align*}
+	\begin{align*}
+		p_{X|N} = P(X = x|N = n) = \frac{P(N = n|X = x)P(X = x)}{P(N = n)} = \frac{(1 - p)^np^2}{(n+1)(1-p)^np^2} = \frac{1}{n+1}
+	\end{align*}
+	Intuitively, if we have $n+2$ trials with the $(n+2)^{\text{th}}$ trial is success, and the first $n+1$ trials contains $1$ success, that is $N = n$. Since we know where the success apears is completely with the same probability having $n+1$ choices, so the $p_{X|N} = \frac{1}{n+1}$.
+\end{enumerate}
+
+
+
+
+\question{7.10}
+\Solution{}
+\begin{enumerate}[(a)]
+	\item \begin{align*}
+		F_{T}(t|X = x) &= P(T\leqslant t|X = x) = P(Y\leqslant t - x) = 1-e^{-\lambda(t - x)},\quad t>x\\[6pt]
+		F_{T}(t|X = x) &= 0,\quad t\leqslant x
+	\end{align*}\vspace{0.5cm}
+	\item \begin{align*}
+		f_{T|X}(t|x) &= \frac{\mathrm{d} F_{T}(t|X = x)}{\mathrm{d} t} = \lambda e^{-\lambda(t-x)},\quad t>x\\[6pt]
+		f_{T|X}(t|x) &= 0,\quad t\leqslant x
+	\end{align*}
+	It is valid 'cause for any $\lambda>0$, $f_{T|X}(t|x)\geqslant 0$ for $t\in\mathbb{R}$. And we have $$\int_{-\infty}^{\infty}f_{T|X}(t|x)\,\mathrm{d}t = \int_{0}^{\infty}\lambda e^{-\lambda u}\,\mathrm{d}u = \lambda\cdot\frac{-1}{\lambda}(\lim_{u\to\infty}e^{-\lambda u} - 1) = 1$$
+	\vspace{0.5cm}
+	\item \begin{align*}
+		f_{X|T}(x|t) = \frac{f_{T|X}{(t|x)}f_X(x)}{f_T(t)} = \frac{\lambda^2 e^{-\lambda t}}{f_T(t)}
+	\end{align*}
+	Since when $x\leqslant0$ and $x\geqslant t$, the PDF is always zero, to make it valid, we get $$1 = \int_{0}^t \frac{\lambda^2 e^{-\lambda t}}{f_T(t)}\,\mathrm{d}x = \frac{\lambda^2 e^{-\lambda t}t}{f_T(t)}$$
+	So that $f_{X|T}(x|t) = \frac{1}{t}$ for a given positive constant $t$. Since t is positive and as we show above we know that the integral of $f_{X|T}(x|t)$ in $\mathbb{R}$ is $1$, we get this is valid PDF.
+	\vspace{0.5cm}
+	\item From (c) we know that $$1 = \int_{0}^t \frac{\lambda^2 e^{-\lambda t}}{f_T(t)}\,\mathrm{d}x = \frac{\lambda^2 e^{-\lambda t}t}{f_T(t)}$$
+	So we have: $f_T(t) = \lambda^2 t e^{-\lambda t}$
+\end{enumerate}
+
+\pagebreak
+\question{7.17}
+\Solution{}
+\begin{enumerate}[(a)]
+	\item \begin{align*}
+		1 = \int_{-\infty}^{\infty}\,\mathrm{d}x\int_{-\infty}^{\infty} f_{X, Y}(x, y)\,\mathrm{d}y &= \int_{0}^{1}\,\mathrm{d}x\int_{x}^{1} cxy\,\mathrm{d}y = \frac{c}{8}\\[6pt]
+		\Rightarrow c &= 8
+	\end{align*}\vspace{0.5cm}
+	\item \begin{align*}
+		f_X(x) &= \int_{x}^1f_{X, Y}(x, y)\,\mathrm{d}y = 4x - 4x^3,\quad x\in(0, 1)\\[8pt]
+		f_Y(y) &= \int_{0}^yf_{X, Y}(x, y)\,\mathrm{d}x = 4y^3,\quad x\in(0, 1)\\[8pt]
+		\Rightarrow f_{X, Y}(x, y) &= 8xy\neq (4x - 4x^3)4y^3= f_X(x)\, f_Y(y)
+	\end{align*}
+	So $X$ and $Y$ are not independnt.\vspace{0.5cm}
+	\item From (b), there are\begin{align*}
+		f_X(x) &= \int_{x}^1f_{X, Y}(x, y)\,\mathrm{d}y = 4x - 4x^3,\quad x\in(0, 1)\quad\text{otherwise}\ 0\\[8pt]
+		f_Y(y) &= \int_{0}^yf_{X, Y}(x, y)\,\mathrm{d}x = 4y^3,\quad y\in(0, 1)\quad\text{otherwise}\ 0\end{align*}\vspace{0.5cm}
+	\item \begin{align*}
+		f_{Y|X}(y|x) = \frac{f_{X, Y}(x, y)}{f_{X}(x)} = \frac{2y}{1 - x^2},\quad 0<x<y<1\quad\text{otherwise}\ 0
+	\end{align*}
+\end{enumerate}
+\pagebreak
+
+
+\question{7.20}
+\Solution{}
+\begin{enumerate}[(a)]
+	\item \begin{align*}
+		M \leqslant m &\Rightarrow U_1,U_2,U_3 \leqslant m\\[8pt]
+		F_M(m) &= F_{U_1}(m)F_{U_2}(m)F_{U_2}(m) = m^3,\quad (0\leqslant m \leqslant 1\quad\text{otherwise}\ 0)\\[8pt]
+		f_M(m) &= \frac{\mathrm{d} F_M(m)}{\mathrm{d} m} = 3m^2,\quad (0\leqslant m \leqslant 1\quad\text{otherwise}\ 0)\\[8pt]
+	\end{align*}
+	If $L\geqslant l$ and $M\leqslant m$, then $l\leqslant U_i\leqslant m$ for all $i\in\{1, 2, 3\}$. So that $$P(L\geqslant l, M\leqslant m) = (m - l)^3$$
+	\begin{align*}
+		P(M\leqslant m) &= P(L\geqslant l, M\leqslant m) + P(L\leqslant l, M\leqslant m)\\[8pt]
+		\Rightarrow F_{L, M}(l, m) &= P(L\leqslant l, M\leqslant m)\\[8pt]
+		&= P(M\leqslant m) - P(L\geqslant l, M\leqslant m)\\[8pt]
+		&= m^3 - (m - l)^3,\quad( 0\leqslant m,l \leqslant 1,\quad m\geqslant l\quad\text{otherwise}\ 0)\\[8pt]
+		\Rightarrow f_{L, M}(l, m) &= \frac{\mathrm{d} F_{L, M}(l, m)}{\mathrm{d} m} = 6(m - l),\quad( 0\leqslant m,l \leqslant 1,\quad m\geqslant l\quad\text{otherwise}\ 0)
+	\end{align*}\vspace{1cm}
+	\item \begin{align*}
+		f_L(l) &= \frac{\mathrm{d} F_L(l)}{\mathrm{d} l}  = \frac{\mathrm{d} (1-l)^3)}{\mathrm{d} l} = 3(1 - l)^2,\quad( 0\leqslant l \leqslant 1,\quad\text{otherwise}\ 0)\\[6pt]
+		f_{M|L}(m|l) &= \frac{f_{M,L}(m,l)}{f_L(l)} = \frac{2(m - l)}{(1 - l)^2},\quad( 0\leqslant m,l \leqslant 1,\quad m\geqslant l\quad\text{otherwise}\ 0)
+	\end{align*}
+\end{enumerate}
+\pagebreak
+
+\question{7.24}
+\Solution{}
+\begin{enumerate}[(a)]
+	\item Let $\frac{Y_1}{Y_2} = T$\begin{align*}
+		F_T(t) = P(\frac{Y_1}{Y_2}\leqslant t) = P(Y_1\leqslant tY_2)
+		= \int_{0}^{\infty}\lambda_2 e^{\lambda_2 y_2}\,\mathrm{d}y_2\int_{0}^{ty_2}\lambda_1 e^{-\lambda_1 y_1}\,\mathrm{d}y_1 = \frac{t\lambda_1}{t\lambda_1+\lambda_2},\\[6pt]
+	\end{align*}
+	For $t>0,\quad F_T(t) = 0\ \text{otherwise}$.$$f_T(t) = \frac{\mathrm{d} F_T(t)}{\mathrm{d} t} = \frac{\lambda_1}{\lambda_1+\lambda_2}$$\vspace{0.5cm}
+	\item When $t = 1$, $$P(Y_1<Y_2) = \frac{\lambda_1}{\lambda_1+\lambda_2}$$
+\end{enumerate}
+\vspace{1cm}
+
+\question{7.29}
+\Solution{}
+\begin{enumerate}[(a)]
+	\item When $m = l \geqslant 0$, \begin{align*}
+		p_{L, M}(l, m) = P(X = Y = l = m) = (1-p)^{2l}p^2
+	\end{align*}
+	When $m > l \geqslant 0$, \begin{align*}
+		p_{L, M}(l, m) = P(X = m, Y = l) + P(X = l, Y = m) = 2(1-p)^{l+m}p^2
+	\end{align*}
+	$0$ otherwise. 
+	That is \begin{equation*}
+		p_{L, M}(l, m) =\begin{cases}
+			&(1-p)^{2l}p^2,\qquad m = l \geqslant 0\\[6pt]
+			&2(1-p)^{l+m}p^2,\qquad m > l \geqslant 0\\[6pt]
+			&0,\qquad\ \text{otherwise}
+		\end{cases}
+	\end{equation*}
+	Since $P(M = m, L = l) = 0$ when $m < l$ while $P(M = m)\neq 0$ and $P(L = l)\neq 0$ giving $m<l$, so in this case $P(M = m, L = l)\neq P(L = l)P(M = m)$, so they are not independnt.
+	\item \begin{align*}
+		p_L(l) &= \sum_{m = 0}^{\infty}p_{L, M}(l, m) = \sum_{m = l}^{\infty}p_{L, M}(l, m) = (1-p)^{2l}p^2+\sum_{m = l+1}^{\infty}p_{L, M}(l, m)\\[6pt]
+		&=(1-p)^{2l}p^2+\sum_{m = l+1}^{\infty}2(1-p)^{l+m}p^2 = (1-p)^{2l}p^2+2(1-p)^{l}p^2\sum_{m = l+1}^{\infty}(1-p)^{m}\\[6pt]
+		&=(1-p)^{2l}p^2+2(1-p)^{2l+1}p = (1 - p)^{2l}(2-p)p
+	\end{align*}
+	Story: Performing two Geom processes $\alpha$ and $\beta$. Let $A = $``The $\alpha$ processes is in success", $B = $``The $\beta$ processes is in success".
+	$C = $``The first successful processes is in success". So that the $L$ with the success probability that $$p' = P(C) = P(A\cup B) = P(A)+P(B) - P(A\cup B) = 2p - p^2 = (2 - p)p$$
+	So $L\sim Geom(p')$, $p_L(l) = (1 - (2 - p)p)^l(2 - p)p = (1 - p)^{2l}(2-p)p$\vspace{1cm}
+	\item \begin{align*}
+		EM = E(X+Y) - EL = EX + EY - EL = \frac{2(1-p)}{p} - \frac{(1-p)^2}{(2-p)p} = \frac{(1-p)(3-p)}{p(2-p)}
+	\end{align*}\vspace{1cm}
+	\item From Memoryless property, $p_{M-L}(k) = p(X = k) = (1-p)^kp$ whatever $L$ is. So
+	\begin{align*}
+		p_{L, M-L}(l, k) = P(L = l, M - L = k) = P(M-L = k|L = l)P(L = l) = (1-p)^{2l+k}(2-p)p^2
+	\end{align*}
+	For $k\geqslant 0$, $p_{L, M-L}(l, k) = = 0$ otherwise.
+	We know that from the Memoryless property, the $M - L$ is nothing to do with $L$, so that $p_{L, M-L}(l, k) = p_L(l)p_{M-L}(k)$. So they are independnt.
+\end{enumerate}
+
+\end{document}

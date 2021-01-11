@@ -1,0 +1,323 @@
+\documentclass[10.5pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{amsfonts,bm}
+\usepackage{listings}
+\usepackage{graphicx}
+\usepackage[shortlabels]{enumitem}
+\usepackage{tikz}
+\usepackage{extramarks}
+%\usepackage{enumerate}
+\usepackage[margin=1in]{geometry}
+\usepackage{fancyhdr}
+\usepackage{epsfig}
+\usepackage{amsmath}
+\usepackage{float}
+\usepackage{amssymb}
+\usepackage{caption}
+\usepackage{subfigure}
+\usepackage{graphics}
+\usepackage{titlesec}
+\usepackage{mathrsfs}
+\usepackage{amsfonts}
+\usepackage{indentfirst}
+\usepackage{fontspec}
+\usepackage{dashrule}
+\usepackage{ctex}
+\usepackage{algpseudocode}
+%\usepackage{algorithm}
+
+\renewcommand{\baselinestretch}{1.2}
+
+\usepackage{tikz-qtree}
+\usetikzlibrary{graphs}
+\tikzset{every tree node/.style={minimum width=2em,draw,circle},
+	blank/.style={draw=none},
+	edge from parent/.style=
+	{draw,edge from parent path={(\tikzparentnode) -- (\tikzchildnode)}},
+	level distance=1.2cm} 
+\setlength{\parindent}{0pt}
+\setlength{\headheight}{13.6pt}
+\newcommand\question[1]{\vspace{.2in}\hrule\vspace{0.04in}\textbf{Problem\ #1}\vspace{.4em}\hrule\vspace{.10in}}
+\newcommand\Solution{\vspace{.3in}\textbf{Solution:}\vspace{.5em}\hrule\vspace{.08in}\par}
+\newcommand\Answer{\vspace{.2in}\textbf{Answer:}\vspace{.5em}\hrule\vspace{.08in}\par}
+\newcommand\Proof{\vspace{.3in}\textbf{Proof:}\vspace{.5em}\hrule\vspace{.08in}\par}
+\newcommand\minsolution{\vspace{.3in}\textbf{Solution:}\vspace{.4em}\par}
+\newcommand\minanswer{\vspace{.2in}\textbf{Answer:}\vspace{.4em}\par}
+\newcommand\minproof{\vspace{.3in}\textbf{Proof:}\vspace{.4em}\par}
+\renewcommand\part[1]{\vspace{.10in}\textbf{(#1)}}
+\newcommand\algorithm{\vspace{.10in}\textbf{Algorithm: }}
+\newcommand\correctness{\vspace{.10in}\textbf{Correctness: }}
+\newcommand\runtime{\vspace{.10in}\textbf{Running time: }}
+\pagestyle{fancyplain}
+
+\setCJKfamilyfont{Song}[AutoFakeBold]{宋体-简 细体}
+\newcommand*{\Song}{\CJKfamily{Song}}
+
+
+
+
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}}
+
+\title{
+	\normalfont \normalsize
+	\begin{figure}[!h]
+	\centering
+	\includegraphics[width=4.8in, keepaspectratio]{logo_red.pdf}\\[1cm]
+		%\caption{}
+	\end{figure}
+	%\huge{\textsc{ShanghaiTech University}} \\ [8pt]
+	\horrule{0.5pt} \\[0.4cm]
+	\Huge SI140 Probability \& Mathematical Statistics\\[0.4cm]
+	\LARGE Homework 12\\
+	\horrule{2pt} \\[1.5cm]
+}
+ 
+\author{\Song{\huge\textbf{陈昱聪}}\\[0.2cm]Chen Yucong\ ><E<>N\\[4.5cm]\textbf{Student ID: 2019533079}\\[0.2cm] 
+\textbf{Email:}\ {\ttfamily chenyc@shanghaitech.edu.cn}\\[0.8cm] \LARGE\textsc{School of Information Science and Technology}\\[0.63cm]
+\texttt{$\circledcirc$ Group\#2\ (TA:曾理)}}
+\date{}
+
+
+\pagestyle{fancy}
+\lhead{SI140 Probability \& Mathematical Statistics}
+\chead{\textbf{Homework 12\ }}
+\rhead{陈昱聪\,2019533079\ \,Due:\,11:59\,am, $21^{\text{th}}$ Dec.}
+\cfoot{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+
+
+\fancypagestyle{firstpage}
+{
+	\renewcommand{\headrulewidth}{0pt}
+	\fancyhf{}
+	\fancyfoot[C]{\thepage}
+}
+
+
+\newcounter{ProblemCounter}
+\newcounter{oldvalue}
+\newcommand{\problem}[2][-1]{
+	\setcounter{oldvalue}{\value{secnumdepth}}
+	\setcounter{secnumdepth}{0}
+	\ifnum#1>-1
+	\setcounter{ProblemCounter}{0}
+	\else
+	\stepcounter{ProblemCounter}
+	\fi
+	\section{Problem \arabic{ProblemCounter}: #2}
+	\setcounter{secnumdepth}{\value{oldvalue}}
+}
+\newcommand{\subproblem}[1]{
+	\setcounter{oldvalue}{\value{section}}
+	\setcounter{section}{\value{ProblemCounter}}
+	\subsection{#1}
+	\setcounter{section}{\value{oldvalue}}
+}
+
+\setmonofont{Helvetica}
+\definecolor{blve}{rgb}{0.3372549 , 0.61176471, 0.83921569}
+\definecolor{gr33n}{rgb}{0.29019608, 0.7372549 , 0.64705882}
+\makeatletter
+\lst@InstallKeywords k{class}{classstyle}\slshape{classstyle}{}ld
+\makeatother
+\lstset{language=C++,
+	basicstyle=\ttfamily,
+	keywordstyle=\color{blve}\ttfamily,
+	stringstyle=\color{red}\ttfamily,
+	commentstyle=\color{green}\ttfamily,
+	morecomment=[l][\color{magenta}]{\#},
+	classstyle = \bfseries\color{gr33n}, 
+	tabsize=4
+}
+
+
+\begin{document}
+	
+\maketitle
+\thispagestyle{firstpage}
+\thispagestyle{empty}
+\setcounter{page}{0}
+
+\question{9.4}
+\Solution{}
+\begin{enumerate}[(a)]
+	\item \begin{align*}
+		E(X|X\geqslant1)\,P(X\geqslant1)+E(X|X=0)\,P(X=0) &= E(X)\\[6pt]
+		E(X|X\geqslant1)\,(1-P(X=0))+0 &= \lambda\\[6pt]
+		E(X|X\geqslant1)\,(1-e^{-\lambda})&= \lambda\\[6pt]
+		E(X|X\geqslant1)&=\frac{\lambda}{1-e^{-\lambda}}
+	\end{align*}\vspace{1cm}
+	\item \begin{align*}
+		E(X^2|X\geqslant1)\,P(X^2\geqslant1)+E(X^2|X=0)\,P(X=0) &= E(X^2)\\[6pt]
+		E(X^2|X\geqslant1)\,(1-P(X=0))+0 &= \frac{\mathrm{d}^2 }{\mathrm{d} t^2}e^{\lambda(e^t-1)}\Bigg|_{t = 0} \\[6pt]
+		E(X^2|X\geqslant1)\,(1-e^{-\lambda})&= \lambda^2+\lambda\\[6pt]
+		E(X^2|X\geqslant1)&=\frac{\lambda^2+\lambda}{1-e^{-\lambda}}
+	\end{align*}
+	So that\begin{align*}
+		\text{Var}(X|X\geqslant1) = E(X^2|X\geqslant1) - (E(X|X\geqslant1))^2 = \frac{\lambda^2+\lambda}{1-e^{-\lambda}} - \left(\frac{\lambda}{1-e^{-\lambda}}\right)^2
+	\end{align*}
+\end{enumerate}
+
+\pagebreak
+\question{9.10}
+\Solution{}
+\begin{enumerate}[(a)]
+	\item \begin{align*}
+		w_{HT} &:\ \text{\# tosses until the $HT$ for the first time occurs}\\[6pt]
+		w_{1} &:\ \text{\# tosses waiting for the first $H$}\\[6pt]
+		w_{2} &:\ \text{\# tosses waiting for the first $T$ after the first $H$}\\[6pt]
+		w_{HT} &= w_1 + w_2\quad w_1\sim\text{Fs}(p)\quad w_2\sim\text{Fs}(1-p)
+	\end{align*}
+	From the properties of Fs, we have $$E(w_{HT}) = E(w_1+w_2) = E(w_1)+E(w_2) = \frac{1}{p}+\frac{1}{1-p}$$
+	\vspace{0.5cm}
+	\item By the similar definition, we can find the expecation by condition on the first toss.
+	\begin{align*}
+		E(w_{HH}) = E(w_{HH}|H)p + E(w_{HH}|T)(1-p) = E(w_{HH}|H)p + (1+E(w_{HH}))(1-p)
+	\end{align*}
+	By condition on the second toss,  we have
+	$$E(w_{HH}|H) = E(w_{HH}|HH)p+E(w_{HH}|HT)(1-p) = 2p + (2+E(w_{HH}))(1-p)$$
+	Solve the equation, thus$$E(w_{HH}) = \frac{1}{p}+\frac{1}{p^2}$$\vspace{0.5cm}
+	\item 
+	\begin{gather*}
+		E\left(\frac{1}{p}\right) = \frac{\Gamma(a+b)}{\Gamma(a)\Gamma(b)}\int_0^1{p}^{-1}\, p^{a-1}(1-p)^{b-1}\,\mathrm{d} p = \frac{\Gamma(a+b)}{\Gamma(a)\Gamma(b)}\frac{\Gamma(a-1)\Gamma(b)}{\Gamma(a+b-1)} = \frac{a+b-1}{a-1}\\[8pt]
+		E\left(\frac{1}{1-p}\right) = \frac{\Gamma(a+b)}{\Gamma(a)\Gamma(b)}\int_0^1{(1-p)}^{-1}\, p^{a-1}(1-p)^{b-1}\,\mathrm{d} p = \frac{\Gamma(a+b)}{\Gamma(a)\Gamma(b)}\frac{\Gamma(a)\Gamma(b-1)}{\Gamma(a+b-1)} = \frac{a+b-1}{b-1}\\[8pt]
+		E\left(\frac{1}{p^2}\right) = \frac{\Gamma(a+b)}{\Gamma(a)\Gamma(b)}\int_0^1{p}^{-2}\, p^{a-1}(1-p)^{b-1}\,\mathrm{d} p = \frac{\Gamma(a+b)}{\Gamma(a)\Gamma(b)}\frac{\Gamma(a-2)\Gamma(b)}{\Gamma(a+b-2)} = \frac{(a+b-1)(a+b-2)}{(a-1)(a-2)}
+	\end{gather*}
+	By Adam's Law,
+	\begin{gather*}
+		E(w_{HT}) = E(E(w_{HT}|p)) = E\left(\frac{1}{p}\right)+E\left(\frac{1}{1-p}\right) = \frac{a+b-1}{a-1}+\frac{a+b-1}{b-1}\\[8pt]
+		E(w_{HH}) = E(E(w_{HH}|p)) = E\left(\frac{1}{p}\right)+E\left(\frac{1}{p^2}\right) = \frac{a+b-1}{a-1}+\frac{(a+b-1)(a+b-2)}{(a-1)(a-2)}
+	\end{gather*}
+\end{enumerate}
+
+
+\pagebreak
+
+\question{9.17}
+\Solution{}
+From $E(Y) = 0$:
+$$	E(W|Z) = E(\rho X+\sqrt{1-\rho^2}\, Y| X) = E(\rho X|X)+E(\sqrt{1-\rho^2}\, Y| X) = \rho X+\sqrt{1-\rho^2}\, E(Y) = \rho X$$
+\vspace{0.7cm}
+
+From $E(XY) = E(X)E(Y) = 0$, $E(Y^2) = \text{Var}(Y) - E^2(Y) = 1$:
+	$$E(W^2|Z) = E(\rho^2 X^2+(1-\rho^2)Y^2+2\rho\sqrt{1-\rho^2}\, XY| X) = \rho^2 X^2 + (1-\rho^2)E(Y^2) = \rho^2 X^2+(1-\rho^2)$$
+
+Thus
+	$$\text{Var}(W|Z) = E(W^2|Z) - E^2(W|Z) = 1-\rho^2$$
+
+
+\vspace{1cm}
+
+\question{9.34}
+\Solution{}
+\begin{enumerate}[(a)]
+	\item Consider $j$ as r.v. ranging the same as $i$.
+	
+	By Adam's Law, $$E(X_j^*) = E(E(X_j^*|j)) = E(\mu) = \mu$$
+
+	By Eve's Law, $$\text{Var}(X_j^*) = E(\text{Var}(X_j^*|j))+\text{Var}(E(X_j^*|j)) = E(\sigma^2)+\text{Var}(\mu) = \sigma^2$$
+
+	\item Using the conclusions (property about independence) given by hint.
+	\begin{align*}
+		E(\bar{X}^*|X_1, \dots, X_n) 
+		&= E(\frac{1}{n}(X_1^*+\dots+X_n^*)|X_1, \dots, X_n)\\[6pt]
+		&= \frac{1}{n}E(X_1^*+\dots+X_n^*|X_1, \dots, X_n)\\[6pt]
+		&= \frac{1}{n}(E(X_1^*|X_1, \dots, X_n)+\dots+E(X_n^*|X_1, \dots, X_n))\\[6pt]
+		&= \frac{1}{n}(nE(X_1^*|X_1, \dots, X_n))\\[6pt]
+		&= E(X_1^*|X_1, \dots, X_n)\\[6pt]
+		&= \frac{1}{n}(X_1+\dots+X_n)
+	\end{align*}
+
+	\begin{align*}
+		\text{Var}(\bar{X}^*|X_1, \dots, X_n) 
+		&= \text{Var}(\frac{1}{n}(X_1^*+\dots+X_n^*)|X_1, \dots, X_n)\\[6pt]
+		&= \frac{1}{n^2}\text{Var}(X_1^*+\dots+X_n^*|X_1, \dots, X_n)\\[6pt]
+		&= \frac{1}{n^2}(\text{Var}(X_1^*|X_1, \dots, X_n)+\dots+\text{Var}(X_n^*|X_1, \dots, X_n))\\[6pt]
+		&= \frac{1}{n^2}(n\text{Var}(X_1^*|X_1, \dots, X_n))\\[6pt]
+		&= \frac{1}{n}\text{Var}(X_1^*|X_1, \dots, X_n)\\[6pt]
+		&= \frac{1}{n^2}\sum_{i = 1}^n(X_i - \bar{X}_n)^2
+	\end{align*} 
+	Where $\bar{X}_n = \frac{1}{n}(X_1+\dots+X_n)$.
+
+\item 	
+
+By Adam's Law, $$E(\bar{X}^*) = E(E(\bar{X}^*|X_1, \dots, X_n)) = E\left(\frac{1}{n}(X_1+\dots+X_n)\right) = \mu$$
+
+By Eve's Law, \begin{align*}
+	\text{Var}(\bar{X}^*) &= E(\text{Var}(\bar{X}^*|X_1, \dots, X_n))+\text{Var}(E(\bar{X}^*|X_1, \dots, X_n))\\[8pt]
+						&= E\left(\frac{1}{n^2}\sum_{i = 1}^n(X_i - \bar{X}_n)^2\right)+\text{Var}\left(\frac{1}{n}(X_1+\dots+X_n)\right)\\[8pt]
+						&= \frac{\sigma^2}{n}+\frac{1}{n^2}(\text{Var}(X_1)+\dots+\text{Var}(X_n))\\[8pt]
+						&= \frac{\sigma^2}{n}+\frac{\sigma^2}{n}\\[8pt]
+						&=\frac{2\sigma^2}{n}
+\end{align*}
+
+\item Intuitively, $X_i$s are r.v.s. contributing the variance of the mean. But $X_j^*$s are selected randomly from $X_i$s, so they have more randomicity. Reflected in the variance, it is greater.
+
+
+\end{enumerate}
+
+
+\pagebreak
+\question{9.42}
+\Proof{}
+\begin{enumerate}[(a)]
+	\item 	
+	By Adam's Law, $$E(N) = E(E(N|\lambda)) = E(\lambda) = 1$$
+
+	By Eve's Law, $$\text{Var}(N) = E(\text{Var}(N|\lambda))+\text{Var}(E(N|\lambda)) = E(\lambda)+\text{Var}(\lambda) = 2$$
+
+\vspace{1cm}
+
+	\item Let the dollar amount of a claim be $X$, independent of $N$. Using the properties of Log-Normal distribution.
+	
+	$$E(NX) = E(N)E(X) = E(X) = e^{\mu+\frac{\sigma^2}{2}}$$
+	
+	$$\text{Var}(NX)= E(\text{Var}(NX|N)) + \text{Var}(E(NX|N)) = E(N)\text{Var}(X)+\text{Var}(N)E^2(X) = (e^{\sigma^2} + 1)e^{2\mu+\sigma^2}$$
+
+	\vspace{1cm}
+
+	\item \begin{align*}
+		P(N = n) 
+		&= \int_0^{+\infty} P(N=n|\lambda=x)f_\lambda(x)\,\mathrm{d}x = \int_0^{+\infty} \frac{x^ne^{-x}}{n!}e^{-x}\,\mathrm{d}x = \frac{1}{n!}\int_0^{+\infty} x^ne^{-2x}\,\mathrm{d}x\\[6pt]
+		&= \frac{1}{2^{n+1}n!}\int_0^{+\infty} u^n e^{-u}\,\mathrm{d}u = \frac{\Gamma(n+1)}{2^{n+1}n!} = \frac{1}{2^{n+1}}
+	\end{align*}
+	So $N\sim\text{Geom}(\frac{1}{2})$, for non-negative integer $n$.
+	
+	\vspace{1cm}
+
+	\item \begin{align*}
+		f_{\lambda|N}(x|n) = \frac{P(N=n|\lambda = x)f_\lambda(x)}{P(N=n)} = \frac{\frac{x^ne^{-x}}{n!}e^{-x}}{\frac{\Gamma(n+1)}{2^{n+1}n!}} = \frac{x^n\,2^{n+1}\,e^{-2x}}{\Gamma(n+1)}\\[8pt]
+	\end{align*}
+	For $x>0$ and non-negative integer $n$.
+
+	So $\lambda|N\sim\text{Gamma}(n+1, 2)$
+\end{enumerate}
+
+
+\pagebreak
+\question{9.44}
+\Solution{}
+\begin{enumerate}[(a)]
+	\item Since they are independent, from memoryless, \begin{align*}
+		E(X_1+X_2+X_3|X_1>1, X_2>2, X_3>3) &= E(X_1|X_1>1)+E(X_2|X_2>2)+E(X_3|X_3>3)\\[6pt]
+		&= 1+\frac{1}{\lambda_1}+2+\frac{1}{\lambda_2}+3+\frac{1}{\lambda_3}\\[6pt]
+		&= \frac{1}{\lambda_1}+\frac{1}{\lambda_2}+\frac{1}{\lambda_3}+6
+	\end{align*}\vspace{1cm}
+
+	
+	\item Easy to know $P(X_1 = \text{min}(X_1, X_2, X_3)) = P(X_1\leqslant\text{min}(X_2, X_3))$. (Logically Equivalence)
+	
+	From the property in Expo that min$(X_2, X_3)\sim$Expo$(\lambda_2+\lambda_3)$, we have:
+	$$P(X_1 = \text{min}(X_1, X_2, X_3)) = P(X_1\leqslant\text{min}(X_2, X_3)) = \frac{\lambda_1}{\lambda_1+\lambda_2+\lambda_3}$$
+
+
+	\vspace{1cm}
+	\item Let$M = \text{max}(X_1, X_2, X_3)$.From the PDF of order statistic,
+	$$f_M(x) = 3(1-e^{-x})^2e^{-x}$$
+	For $x>0$, $0$ otherwise.
+	It isn't one of the important distributions we have studied.
+\end{enumerate}
+
+
+
+\end{document}

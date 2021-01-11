@@ -1,0 +1,255 @@
+\documentclass[10.5pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{amsfonts,bm}
+\usepackage{listings}
+\usepackage{graphicx}
+\usepackage[shortlabels]{enumitem}
+\usepackage{tikz}
+\usepackage{extramarks}
+%\usepackage{enumerate}
+\usepackage[margin=1in]{geometry}
+\usepackage{fancyhdr}
+\usepackage{epsfig}
+\usepackage{amsmath}
+\usepackage{float}
+\usepackage{amssymb}
+\usepackage{caption}
+\usepackage{subfigure}
+\usepackage{graphics}
+\usepackage{titlesec}
+\usepackage{mathrsfs}
+\usepackage{amsfonts}
+\usepackage{indentfirst}
+\usepackage{fontspec}
+\usepackage{dashrule}
+\usepackage{ctex}
+\usepackage{algpseudocode}
+%\usepackage{algorithm}
+
+\renewcommand{\baselinestretch}{1.2}
+
+\usepackage{tikz-qtree}
+\usetikzlibrary{graphs}
+\tikzset{every tree node/.style={minimum width=2em,draw,circle},
+	blank/.style={draw=none},
+	edge from parent/.style=
+	{draw,edge from parent path={(\tikzparentnode) -- (\tikzchildnode)}},
+	level distance=1.2cm} 
+\setlength{\parindent}{0pt}
+\setlength{\headheight}{13.6pt}
+\newcommand\question[1]{\vspace{.2in}\hrule\vspace{0.04in}\textbf{Problem\ #1}\vspace{.4em}\hrule\vspace{.10in}}
+\newcommand\Solution{\vspace{.3in}\textbf{Solution:}\vspace{.5em}\hrule\vspace{.08in}\par}
+\newcommand\Answer{\vspace{.2in}\textbf{Answer:}\vspace{.5em}\hrule\vspace{.08in}\par}
+\newcommand\Proof{\vspace{.3in}\textbf{Proof:}\vspace{.5em}\hrule\vspace{.08in}\par}
+\newcommand\minsolution{\vspace{.3in}\textbf{Solution:}\vspace{.4em}\par}
+\newcommand\minanswer{\vspace{.2in}\textbf{Answer:}\vspace{.4em}\par}
+\newcommand\minproof{\vspace{.3in}\textbf{Proof:}\vspace{.4em}\par}
+\renewcommand\part[1]{\vspace{.10in}\textbf{(#1)}}
+\newcommand\algorithm{\vspace{.10in}\textbf{Algorithm: }}
+\newcommand\correctness{\vspace{.10in}\textbf{Correctness: }}
+\newcommand\runtime{\vspace{.10in}\textbf{Running time: }}
+\pagestyle{fancyplain}
+
+\setCJKfamilyfont{Song}[AutoFakeBold]{SimSun}
+\newcommand*{\Song}{\CJKfamily{Song}}
+
+
+
+
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}}
+
+\title{
+	\normalfont \normalsize
+	\begin{figure}[!h]
+	\centering
+	\includegraphics[width=4.8in, keepaspectratio]{logo_red.pdf}\\[1cm]
+		%\caption{}
+	\end{figure}
+	%\huge{\textsc{ShanghaiTech University}} \\ [8pt]
+	\horrule{0.5pt} \\[0.4cm]
+	\Huge SI140 Probability \& Mathematical Statistics\\[0.4cm]
+	\LARGE Homework 2\\
+	\horrule{2pt} \\[1.5cm]
+}
+
+\author{\Song{\huge\textbf{陈昱聪}}\\[0.2cm]Chen Yucong\ ><E<>N\\[4.5cm]\textbf{Student ID: 2019533079}\\[0.2cm] 
+\textbf{Email:}\ {\ttfamily chenyc@shanghaitech.edu.cn}\\[0.8cm] \LARGE\textsc{School of Information Science and Technology}\\[0.63cm]
+\texttt{$\circledcirc$ Group\#2\ (TA:曾理)}}
+\date{}
+
+
+\pagestyle{fancy}
+\lhead{SI140 Probability \& Mathematical Statistics}
+\chead{\textbf{Homework 2}}
+\rhead{陈昱聪\quad 2019533079\quad Due: 11:59am 21/09}
+\cfoot{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+
+
+\fancypagestyle{firstpage}
+{
+	\renewcommand{\headrulewidth}{0pt}
+	\fancyhf{}
+	\fancyfoot[C]{\thepage}
+}
+
+
+\lstset
+{
+  language=C++,
+  escapeinside={(*@}{@*)},
+}
+
+\newcounter{ProblemCounter}
+\newcounter{oldvalue}
+\newcommand{\problem}[2][-1]{
+	\setcounter{oldvalue}{\value{secnumdepth}}
+	\setcounter{secnumdepth}{0}
+	\ifnum#1>-1
+	\setcounter{ProblemCounter}{0}
+	\else
+	\stepcounter{ProblemCounter}
+	\fi
+	\section{Problem \arabic{ProblemCounter}: #2}
+	\setcounter{secnumdepth}{\value{oldvalue}}
+}
+\newcommand{\subproblem}[1]{
+	\setcounter{oldvalue}{\value{section}}
+	\setcounter{section}{\value{ProblemCounter}}
+	\subsection{#1}
+	\setcounter{section}{\value{oldvalue}}
+}
+
+\setmonofont{Consolas}
+\definecolor{blve}{rgb}{0.3372549 , 0.61176471, 0.83921569}
+\definecolor{gr33n}{rgb}{0.29019608, 0.7372549 , 0.64705882}
+\makeatletter
+\lst@InstallKeywords k{class}{classstyle}\slshape{classstyle}{}ld
+\makeatother
+\lstset{language=C++,
+	basicstyle=\ttfamily,
+	keywordstyle=\color{blve}\ttfamily,
+	stringstyle=\color{red}\ttfamily,
+	commentstyle=\color{green}\ttfamily,
+	morecomment=[l][\color{magenta}]{\#},
+	classstyle = \bfseries\color{gr33n}, 
+	tabsize=4
+}
+
+
+\begin{document}
+	
+	\maketitle
+	\thispagestyle{firstpage}
+	\thispagestyle{empty}
+	\setcounter{page}{0}
+	\pagebreak
+ 	\question{1.9}
+	\Solution{}
+		\begin{enumerate}[(a)]
+			\item 
+				From point $(0,0)$ to point $(110, 111)$, we have to go through
+				$110$ steps of going one unit to the right and $111$ steps of going one unit up, 
+				so the number of paths there is $$\frac{(110+111)!}{110!\cdot111!}=\binom{221}{110} $$
+				\ \\
+			\item 
+				Break this process into two parts.
+				First we aim to get to point $(110, 111)$, then we go from $(110, 111)$ to $(210,211)$, 
+				then we have the number of paths $$\binom{221}{110}\cdot\binom{210+211-110-111}{210-110}=\binom{221}{110}\cdot\binom{200}{100}$$
+		\end{enumerate}
+		
+       
+\ \\[2cm]
+
+
+
+	\question{1.25}
+		\Solution{}
+
+	There are $k^n$ choices to store these phone number. And there are $\binom{n}{k}\cdot k!$ choices that no two of the numbers are stored  
+	in the same location.
+	So the probability that at least one location has more than one phone number stored there is $$\frac{n^k-\binom{n}{k}\cdot k!}{n^k}$$
+
+\pagebreak
+
+	\question{1.40}
+
+	\Proof{}
+		The total number of $norepeatwords$ is 
+		\begin{align*}
+			\binom{26}{1}\cdot 1!+\binom{26}{2}\cdot 2!+\binom{26}{3}\cdot 3!+\dots+\binom{26}{26}\cdot 26!=\sum_{k = 1}^{26}  \binom{26}{k}\cdot k!
+		\end{align*}
+		The number of $norepeatwords$ using $26$ letters is
+		$$\binom{26}{26}\cdot 26!$$
+		So the probability is
+		\begin{align*}
+			\frac{\binom{26}{26}\cdot 26!}{\sum_{k = 1}^{26}  \binom{26}{k}\cdot k!} &= \frac{26!}{\sum_{k = 1}^{26}  \frac{26!}{(26-k)!}}\\[8pt]
+			&=\frac{1}{\sum_{k = 1}^{26}  \frac{1}{(26-k)!}}\\[8pt]
+			&=\frac{1}{\sum_{k = 0}^{25}  \frac{1}{k!}}\\[8pt]
+		\end{align*}
+		From the inverse of Taylor's formula, we have $1+x+\frac{x^2}{2!}+\frac{x^3}{3!}+\dots=e^x$, when $x = 1$, we know that $1+1+\frac{1}{2!}+\frac{1}{3!}+\dots=e$ 
+		so we know that $\frac{1}{\sum_{k = 0}^{25}  \frac{1}{k!}}\approx \frac{1}{e}$.\\ \ \\$\Box$\\[2cm]
+
+\pagebreak
+
+	\question{1.58}
+
+
+	\begin{enumerate}[(a)]
+		\item \minsolution{}There is $n$ numbers for $n$ positions which allowed for repetions, so we have $n^n$ samples.
+		\item \minsolution{}Using Bose-Einstein Counting, We have $\binom{n+n-1}{n-1} = \binom{2n-1}{n}$ samples.
+		\item \ \\
+		
+		\begin{itemize}
+			\item \minproof{}The probability of getting a certain unordered bootstrap sample is the number of corresponding 
+			ordered samples divided by the total number of ordered samples. Since the numbers of different types of 
+			ordered samples are different (such as there is just one sample that all the elements of it are $a_1$ but there are $n!$ samples that each of them contains all the ${a_i}s$.)\ $\Box$
+			\item \minsolution{}The most unlikely sample is that it just contains one specific type of elements because the corresponding ordered samples are the fewest. Since there are $n$ elements, we get that $p_2 = \frac{n}{n^n} = \frac{1}{n^{n-1}}$.
+			
+			The most likely sample is that it contains all types of elements $(a_1, a_2, \dots, a_n)$ because the number of corresponding ordered samples are the largest. Since there are $n$ elements, we get that $p_1 = \frac{n!}{n^n}$.
+
+			$\Rightarrow$ So $\frac{p_1}{p_2} = n!$.
+			\item\minsolution{} There is just one unordered sample that it contains all the elements, but $n$ samples that only contains one type of elements since there is $n$ $a_i$s.
+			So the ratio is $\frac{1}{n}$.
+		\end{itemize}
+	\end{enumerate}
+
+
+\pagebreak
+
+	\question{1.60}
+	\begin{enumerate}[(a)]
+		\item \minsolution{}
+		First we find the probability of no birthday matches. So we need to take $k$ birthday without repitition. 
+		Since the order matters (because people are different from each other), so the probability is $k!\cdot e_k(\boldsymbol{p})$.
+		Now we can take the complement, so the probability is $$1-k!\cdot e_k(\boldsymbol{p})$$
+		\item \minsolution{}
+		An extreme case is that we just have one day that the probability is $1$, and the rest of it are all $0$. That is $\boldsymbol{p} = (0, 0, 0, \dots, 1, 0, \dots, 0)$.
+		So all people will have the same birthday and so the $P$ will be maxed to $1$. So we can easily think that if the probability distribution is more evenly distributed, P is going to go down. 
+		So that, when the probability of each date becomes the same (i.e. $p_i = \frac{1}{365}$), P gets the minimum.
+		\item \minproof{}
+		\begin{align*}
+			e_k(x_1,x_2,\dots,x_n) &= \sum_{1\leqslant j_1<j_2< \dots<j_k\leqslant n} x_{j_1}\dots x_{j_k}\\[8pt]
+			&= \sum_{3\leqslant j_1<j_2< \dots <j_{k-2}\leqslant n} x_1x_2x_{j_1}\dots x_{j_{k-2}}\qquad(\text{Which contains both $x_1$ and $x_2$})\\[8pt]
+			&+ \sum_{3\leqslant j_1<j_2< \dots <j_{k-1}\leqslant n} x_1x_{j_1}\dots x_{j_{k-1}}\qquad(\text{Which contains $x_1$ but not $x_2$})\\[8pt]
+			&+ \sum_{3\leqslant j_1<j_2< \dots <j_{k-1}\leqslant n} x_2x_{j_1}\dots x_{j_{k-1}}\qquad(\text{Which contains $x_2$ but not $x_1$})\\[8pt]
+			&+  \sum_{3\leqslant j_1<j_2< \dots <j_{k}\leqslant n} x_{j_1}x_{j_2}\dots x_{j_{k}}\qquad(\text{Which doesn't contain $x_1$ nor $x_2$})\\[8pt]
+			&= x_1x_2e_{k-2}(x_3,x_4,\dots,x_n)+(x_1+x_2)e_{k-1}(x_3, x_4\dots, x_n)+e_k(x_3, \dots, x_n)
+		\end{align*}
+		So we have
+
+		\begin{align*}
+			e_k(\boldsymbol{p})&=p_1p_2e_{k-2}(p_3,p_4,\dots,p_n)+(p_1+p_2)e_{k-1}(p_3, p_4\dots, p_n)+e_k(p_3, \dots, p_n)\\[8pt]
+			&\leqslant \frac{(p_1+p_2)^2}{4}e_{k-2}(p_3,p_4,\dots,p_n)+(p_1+p_2)e_{k-1}(p_3, p_4\dots, p_n)+e_k(p_3, \dots, p_n)\\[8pt]
+			&= r_1r_2e_{k-2}(r_3,r_4,\dots,r_n)+(r_1+r_2)e_{k-1}(r_3, r_4\dots, r_n)+e_k(r_3, \dots, r_n)\\[8pt]
+			&= e_k(\boldsymbol{r})\\[8pt]
+		\end{align*}
+		That is $P(\text{at least one birthday match}| \boldsymbol{p})\geqslant P(\text{at least one birthday match}| \boldsymbol{r})$.
+
+		So for the vector $\boldsymbol{p}$, we can always choose two elements of it and let them become $p_1$ and $p_2$ repeatedly, and then take the average so that $\boldsymbol{p}$ becomes a new $\boldsymbol{r}$ over and over again. 
+	Every time we do this work, the $P$ becomes smaller. Until each elements in $\boldsymbol{p}$ becomes exactly the same so that it'll never change. Then $P$ gets the minimum.
+	That is, at this time, $p_i = \frac{1}{365}$.
+	\end{enumerate}
+	
+	
+\end{document}

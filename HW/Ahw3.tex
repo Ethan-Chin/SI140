@@ -1,0 +1,287 @@
+\documentclass[10.5pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{amsfonts,bm}
+\usepackage{listings}
+\usepackage{graphicx}
+\usepackage[shortlabels]{enumitem}
+\usepackage{tikz}
+\usepackage{extramarks}
+%\usepackage{enumerate}
+\usepackage[margin=1in]{geometry}
+\usepackage{fancyhdr}
+\usepackage{epsfig}
+\usepackage{amsmath}
+\usepackage{float}
+\usepackage{amssymb}
+\usepackage{caption}
+\usepackage{subfigure}
+\usepackage{graphics}
+\usepackage{titlesec}
+\usepackage{mathrsfs}
+\usepackage{amsfonts}
+\usepackage{indentfirst}
+\usepackage{fontspec}
+\usepackage{dashrule}
+\usepackage{ctex}
+\usepackage{algpseudocode}
+%\usepackage{algorithm}
+
+\renewcommand{\baselinestretch}{1.2}
+
+\usepackage{tikz-qtree}
+\usetikzlibrary{graphs}
+\tikzset{every tree node/.style={minimum width=2em,draw,circle},
+	blank/.style={draw=none},
+	edge from parent/.style=
+	{draw,edge from parent path={(\tikzparentnode) -- (\tikzchildnode)}},
+	level distance=1.2cm} 
+\setlength{\parindent}{0pt}
+\setlength{\headheight}{13.6pt}
+\newcommand\question[1]{\vspace{.2in}\hrule\vspace{0.04in}\textbf{Problem\ #1}\vspace{.4em}\hrule\vspace{.10in}}
+\newcommand\Solution{\vspace{.3in}\textbf{Solution:}\vspace{.5em}\hrule\vspace{.08in}\par}
+\newcommand\Answer{\vspace{.2in}\textbf{Answer:}\vspace{.5em}\hrule\vspace{.08in}\par}
+\newcommand\Proof{\vspace{.3in}\textbf{Proof:}\vspace{.5em}\hrule\vspace{.08in}\par}
+\newcommand\minsolution{\vspace{.3in}\textbf{Solution:}\vspace{.4em}\par}
+\newcommand\minanswer{\vspace{.2in}\textbf{Answer:}\vspace{.4em}\par}
+\newcommand\minproof{\vspace{.3in}\textbf{Proof:}\vspace{.4em}\par}
+\renewcommand\part[1]{\vspace{.10in}\textbf{(#1)}}
+\newcommand\algorithm{\vspace{.10in}\textbf{Algorithm: }}
+\newcommand\correctness{\vspace{.10in}\textbf{Correctness: }}
+\newcommand\runtime{\vspace{.10in}\textbf{Running time: }}
+\pagestyle{fancyplain}
+
+\setCJKfamilyfont{Song}[AutoFakeBold]{SimSun}
+\newcommand*{\Song}{\CJKfamily{Song}}
+
+
+
+
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}}
+
+\title{
+	\normalfont \normalsize
+	\begin{figure}[!h]
+	\centering
+	\includegraphics[width=4.8in, keepaspectratio]{logo_red.pdf}\\[1cm]
+		%\caption{}
+	\end{figure}
+	%\huge{\textsc{ShanghaiTech University}} \\ [8pt]
+	\horrule{0.5pt} \\[0.4cm]
+	\Huge SI140 Probability \& Mathematical Statistics\\[0.4cm]
+	\LARGE Homework 3\\
+	\horrule{2pt} \\[1.5cm]
+}
+
+\author{\Song{\huge\textbf{陈昱聪}}\\[0.2cm]Chen Yucong\ ><E<>N\\[4.5cm]\textbf{Student ID: 2019533079}\\[0.2cm] 
+\textbf{Email:}\ {\ttfamily chenyc@shanghaitech.edu.cn}\\[0.8cm] \LARGE\textsc{School of Information Science and Technology}\\[0.63cm]
+\texttt{$\circledcirc$ Group\#2\ (TA:曾理)}}
+\date{}
+
+
+\pagestyle{fancy}
+\lhead{SI140 Probability \& Mathematical Statistics}
+\chead{\textbf{Homework 3}}
+\rhead{陈昱聪\ 2019533079\quad Due: 11:59\,am $28^{\text{th}}$ Sep.}
+\cfoot{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+
+
+\fancypagestyle{firstpage}
+{
+	\renewcommand{\headrulewidth}{0pt}
+	\fancyhf{}
+	\fancyfoot[C]{\thepage}
+}
+
+
+\lstset
+{
+  language=C++,
+  escapeinside={(*@}{@*)},
+}
+
+\newcounter{ProblemCounter}
+\newcounter{oldvalue}
+\newcommand{\problem}[2][-1]{
+	\setcounter{oldvalue}{\value{secnumdepth}}
+	\setcounter{secnumdepth}{0}
+	\ifnum#1>-1
+	\setcounter{ProblemCounter}{0}
+	\else
+	\stepcounter{ProblemCounter}
+	\fi
+	\section{Problem \arabic{ProblemCounter}: #2}
+	\setcounter{secnumdepth}{\value{oldvalue}}
+}
+\newcommand{\subproblem}[1]{
+	\setcounter{oldvalue}{\value{section}}
+	\setcounter{section}{\value{ProblemCounter}}
+	\subsection{#1}
+	\setcounter{section}{\value{oldvalue}}
+}
+
+\setmonofont{Consolas}
+\definecolor{blve}{rgb}{0.3372549 , 0.61176471, 0.83921569}
+\definecolor{gr33n}{rgb}{0.29019608, 0.7372549 , 0.64705882}
+\makeatletter
+\lst@InstallKeywords k{class}{classstyle}\slshape{classstyle}{}ld
+\makeatother
+\lstset{language=C++,
+	basicstyle=\ttfamily,
+	keywordstyle=\color{blve}\ttfamily,
+	stringstyle=\color{red}\ttfamily,
+	commentstyle=\color{green}\ttfamily,
+	morecomment=[l][\color{magenta}]{\#},
+	classstyle = \bfseries\color{gr33n}, 
+	tabsize=4
+}
+
+
+\begin{document}
+	
+\maketitle
+\thispagestyle{firstpage}
+\thispagestyle{empty}
+\setcounter{page}{0}
+
+\pagebreak
+
+\question{2.12}
+	\Solution{}
+		\begin{enumerate}[(a)]
+			\item Let $$A = ``\text{Alice sends}\ 1" \qquad B = ``\text{Bob receicves}\ 1"$$
+			Let $P(A) = P(A^c) = 0.5$, from Bayes' Rule, we have:
+			\begin{align*}
+				P(A|B)&=\frac{P(B|A)\cdot P(A)}{P(B)}\\[8pt]
+				&=\frac{P(B|A)\cdot P(A)}{P(B|A)\cdot P(A) + P(B|A^c)\cdot P(A^c)}\\[8pt]
+				&=\frac{0.9\cdot0.5}{0.9\cdot0.5+0.05\cdot0.5}=\frac{18}{19}\approx 0.9474\\[8pt]
+			\end{align*}
+
+			\item Let $$B_i = ``\text{The $i^{th}$ number Bob receicved is}\ 1"$$
+			Let $P(A) = P(A^c) = 0.5$, from Bayes' Rule, we have:
+			\begin{align*}
+				P(A|B_1B_2B_3^c)&=\frac{P(B_1B_2B_3^c|A)\cdot P(A)}{P(A)P(B_1B_2B_3^c|A)+P(A^c)P(B_1B_2B_3^c|A^c)}\\[8pt]
+				&=\frac{P(B_1B_2B_3^c|A)\cdot P(A)}{P(B_1B_2B_3^c|A)\cdot P(A) + P(B_1B_2B_3^c|A^c)\cdot P(A^c)}\\[8pt]
+				&=\frac{0.9\cdot0.9\cdot0.1\cdot0.5}{0.9\cdot0.9\cdot0.1\cdot0.5+0.05\cdot0.05\cdot0.95\cdot0.5} = \frac{648}{667}\\[8pt]&\approx0.9715\\[8pt]
+			\end{align*}
+		\end{enumerate}
+		
+       
+\vspace{2cm}
+
+\pagebreak
+
+\question{2.21}
+	\Solution{}
+	\begin{enumerate}[(a)]
+		\item $A$ = "All 3 tosses landed Heads";\quad $B$ = "At least 2 tosses were Heads".
+		$$P(A|B) = \frac{P(A\cap B)}{P(B)} = \frac{(\frac{1}{2})^3}{\binom{3}{2}\cdot(\frac{1}{2})^3+(\frac{1}{2})^3}=\frac{1}{4}$$
+		\vspace{2cm}
+		\item $C$ = "Two of the slips of paper drwan show the letter H".
+		\begin{align*}
+			P(A|C) = \frac{P(A\cap C)}{P(C)}&=\frac{P(A\cap C)}{P(C|A)P(A)+P(C|A^c)P(A^c)}\\[8pt]
+			&= \frac{P(A)}{P(A)+P(C\cap A^c)}\\[8pt]
+			&=\frac{(\frac{1}{2})^3}{(\frac{1}{2})^3+\binom{3}{2}\cdot(\frac{1}{2})^3\cdot\frac{1}{\binom{3}{2}}}\\[8pt]
+			&=\frac{1}{2}
+		\end{align*}
+
+	\end{enumerate}
+
+\pagebreak
+
+\question{2.26}
+	\Solution{}
+	\begin{enumerate}[(a)]
+		\item \begin{align*}
+			P(L|M_1) = \frac{P(M_1|L)P(L)}{P(M_1)} = \frac{P(M_1|L)P(L)}{P(M_1|L)P(L)+P(M_1|L^c)P(L^c)} = \frac{0.9\cdot0.1}{0.9\cdot0.1+0.9\cdot0.1} = \frac{1}{2}\\
+		\end{align*}
+
+		\vspace{2cm}
+
+
+		\item \begin{align*}
+			P(L|M_1\cap M_2) =\frac{P(M_1\cap M_2|L)P(L)}{P(M_1\cap M_2)}=\frac{0.1\cdot0.9^2}{0.1\cdot0.9^2+0.1^2\cdot0.9}= \frac{9}{10}\\
+		\end{align*}
+
+		\vspace{2cm}
+
+
+		\item \begin{align*}
+			\tilde{P}(L|M_2) = \frac{\tilde{P}(L\cap M_2)}{\tilde{P}(M_2)}
+			= \frac{P(L\cap M_2|M_1)}{P(M_2|M_1)}
+			= \frac{\frac{P((L\cap M_2)\cap M_1)}{P(M_1)}}{\frac{P(M_1\cap M_2)}{P(M_1)}}
+			= \frac{P(L\cap (M_2\cap M_1))}{P(M_1\cap M_2)}
+			= P(L|(M_2\cap M_1))
+		\end{align*}
+	\end{enumerate}
+		
+\pagebreak
+
+\question{2.29}
+\Proof{}
+$A$ = "Both children are girls";\quad $B$ = "At least one is a girl with characteristic $C$".
+
+\begin{align*}
+	P(A|B) = \frac{P(A\cap B)}{P(B)}
+\end{align*}
+
+Since the probability a specific child is a girl with $C$ is $\frac{1}{2}\cdot p$, we have 
+$$P(B) = 1 - (1 - \frac{1}{2}\cdot p)^2$$
+To be specific, we can tell that $P(A\cap B) = P(A\cap(\text{At least one child is with characteristic $C$}))$.
+
+So that is 
+\begin{align*}
+	P(A|B) = \frac{P(A\cap B)}{P(B)} 
+	= \frac{\frac{1}{4}\cdot(1-(1-p)^2)}{1-(1-\frac{1}{2}p)^2} =\frac{2-p}{4-p}
+\end{align*}
+$\Box$
+
+\pagebreak
+
+\question{2.36}
+\Solution{}
+\begin{enumerate}[(a)]
+	\item $A$ = "Being good at baseball";\quad $B$ = "Having a good math score on the test".
+	
+	Without conditioning on having a good math score, the probability of being good at base ball could be:
+	$$P(A|A\cup B) = \frac{P(A\cap(A\cup B))}{P(A\cup B)} = \frac{P(A)}{P(A\cup B)}$$
+	Since for a student admitted to the university, he is at least with one of $A$ and $B$, so use the probability of $A\cup B$ as the condition.
+
+	With the conditioning on having a good math score, the probability of being good at base ball could be:
+	$$P(A|B, A\cup B) = \frac{P(A\cap B|A\cup B)}{P(B|A\cup B)} = \frac{P(A)P(B)}{P(B)}=P(A)>\frac{P(A)}{P(A\cup B)}$$.
+
+	That's because without conditioning, the probability of $A$ would be less in student who are admitted by the colledge than in a universal student, since the demographics have changed.
+	But with the condition, we know that the probability is the same to a universal student because the both denominators that we're picking are the same, which are both with $B$, in the constraint that $A$ and $B$ are independent.  
+	Since $P(A\cup B)<1$, so we know they are negatively associated.
+	\vspace{2cm}
+	\item As we proved in (a) as above, I'm just going to write them down again in here...
+	$$P(A|C) = \frac{P(A\cap C)}{P(C)} = \frac{P(A\cap(A\cup B))}{P(C)} = \frac{P(A)}{P(C)}$$
+	But forn$P(A|B, C)$, there is
+	$$P(A|B, C) = \frac{P(A\cap B|C)}{P(B|C)} = \frac{\frac{P(A\cap B\cap C)}{P(C)}}{\frac{P(B\cap C)}{P(C)}}=\frac{P(A)P(B)}{P(B)}=P(A)>\frac{P(A)}{P(C)}$$
+	Since $P(C)<1$.
+
+	$\Box$
+
+\end{enumerate}
+
+
+\pagebreak
+
+\question{2.37}
+\Solution{}
+Let
+\begin{align*}
+	W &= W_1^c,\dots,W_{22}^c,W_{23},W_{24}^c,\dots,W_{63}^c,W_{64},W_{65},W_{66}^c,\dots,W_{100}^c\\[8pt]
+	X_p &= (1-p_1)(1-p_2)\dots (1-p_{22})\,p_{23}\,(1-p_{24})\dots(1-p_{63})\,p_{64}\,p_{65}\,(1-p_{66})\dots(1-p_{100})\\[8pt]
+	X_r &= (1-r_1)(1-r_2)\dots (1-r_{22})\,r_{23}\,(1-r_{24})\dots(1-r_{63})\,r_{64}\,r_{65}\,(1-r_{66})\dots(1-r_{100})\\[8pt]
+\end{align*}
+
+From Bayes' Rule, we have
+\begin{align*}
+	P(\text{spam}|W) 
+	&= \frac{P(W|\text{spam})P(\text{spam})}{P(W)}\\[8pt]
+	&= \frac{P(W|\text{spam})P(\text{spam})}{P(W|\text{spam})P(\text{spam})+P(W|\text{not spam})P(\text{not spam})}\\[8pt]
+	&= \frac{p\cdot X_p}{p\cdot X_p+(1-p)\cdot X_r}\\[8pt]
+\end{align*}
+Where $X_p$ and $X_r$ are defined as above.
+\end{document}

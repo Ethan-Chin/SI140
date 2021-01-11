@@ -1,0 +1,338 @@
+\documentclass[10.5pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{amsfonts,bm}
+\usepackage{listings}
+\usepackage{graphicx}
+\usepackage[shortlabels]{enumitem}
+\usepackage{tikz}
+\usepackage{extramarks}
+%\usepackage{enumerate}
+\usepackage[margin=1in]{geometry}
+\usepackage{fancyhdr}
+\usepackage{epsfig}
+\usepackage{amsmath}
+\usepackage{float}
+\usepackage{amssymb}
+\usepackage{caption}
+\usepackage{subfigure}
+\usepackage{graphics}
+\usepackage{titlesec}
+\usepackage{mathrsfs}
+\usepackage{amsfonts}
+\usepackage{indentfirst}
+\usepackage{fontspec}
+\usepackage{dashrule}
+\usepackage{ctex}
+\usepackage{algpseudocode}
+%\usepackage{algorithm}
+
+\renewcommand{\baselinestretch}{1.2}
+
+\usepackage{tikz-qtree}
+\usetikzlibrary{graphs}
+\tikzset{every tree node/.style={minimum width=2em,draw,circle},
+	blank/.style={draw=none},
+	edge from parent/.style=
+	{draw,edge from parent path={(\tikzparentnode) -- (\tikzchildnode)}},
+	level distance=1.2cm} 
+\setlength{\parindent}{0pt}
+\setlength{\headheight}{13.6pt}
+\newcommand\question[1]{\vspace{.2in}\hrule\vspace{0.04in}\textbf{Problem\ #1}\vspace{.4em}\hrule\vspace{.10in}}
+\newcommand\Solution{\vspace{.3in}\textbf{Solution:}\vspace{.5em}\hrule\vspace{.08in}\par}
+\newcommand\Answer{\vspace{.2in}\textbf{Answer:}\vspace{.5em}\hrule\vspace{.08in}\par}
+\newcommand\Proof{\vspace{.3in}\textbf{Proof:}\vspace{.5em}\hrule\vspace{.08in}\par}
+\newcommand\minsolution{\vspace{.3in}\textbf{Solution:}\vspace{.4em}\par}
+\newcommand\minanswer{\vspace{.2in}\textbf{Answer:}\vspace{.4em}\par}
+\newcommand\minproof{\vspace{.3in}\textbf{Proof:}\vspace{.4em}\par}
+\renewcommand\part[1]{\vspace{.10in}\textbf{(#1)}}
+\newcommand\algorithm{\vspace{.10in}\textbf{Algorithm: }}
+\newcommand\correctness{\vspace{.10in}\textbf{Correctness: }}
+\newcommand\runtime{\vspace{.10in}\textbf{Running time: }}
+\pagestyle{fancyplain}
+
+\setCJKfamilyfont{Song}[AutoFakeBold]{SimSun}
+\newcommand*{\Song}{\CJKfamily{Song}}
+
+
+
+
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}}
+
+\title{
+	\normalfont \normalsize
+	\begin{figure}[!h]
+	\centering
+	\includegraphics[width=4.8in, keepaspectratio]{logo_red.pdf}\\[1cm]
+		%\caption{}
+	\end{figure}
+	%\huge{\textsc{ShanghaiTech University}} \\ [8pt]
+	\horrule{0.5pt} \\[0.4cm]
+	\Huge SI140 Probability \& Mathematical Statistics\\[0.4cm]
+	\LARGE Homework 4\\
+	\horrule{2pt} \\[1.5cm]
+}
+
+\author{\Song{\huge\textbf{陈昱聪}}\\[0.2cm]Chen Yucong\ ><E<>N\\[4.5cm]\textbf{Student ID: 2019533079}\\[0.2cm] 
+\textbf{Email:}\ {\ttfamily chenyc@shanghaitech.edu.cn}\\[0.8cm] \LARGE\textsc{School of Information Science and Technology}\\[0.63cm]
+\texttt{$\circledcirc$ Group\#2\ (TA:曾理)}}
+\date{}
+
+
+\pagestyle{fancy}
+\lhead{SI140 Probability \& Mathematical Statistics}
+\chead{\textbf{Homework 4}}
+\rhead{陈昱聪\ 2019533079\quad Due: 11:59\,am $10^{\text{th}}$ Oct.}
+\cfoot{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+
+
+\fancypagestyle{firstpage}
+{
+	\renewcommand{\headrulewidth}{0pt}
+	\fancyhf{}
+	\fancyfoot[C]{\thepage}
+}
+
+
+\newcounter{ProblemCounter}
+\newcounter{oldvalue}
+\newcommand{\problem}[2][-1]{
+	\setcounter{oldvalue}{\value{secnumdepth}}
+	\setcounter{secnumdepth}{0}
+	\ifnum#1>-1
+	\setcounter{ProblemCounter}{0}
+	\else
+	\stepcounter{ProblemCounter}
+	\fi
+	\section{Problem \arabic{ProblemCounter}: #2}
+	\setcounter{secnumdepth}{\value{oldvalue}}
+}
+\newcommand{\subproblem}[1]{
+	\setcounter{oldvalue}{\value{section}}
+	\setcounter{section}{\value{ProblemCounter}}
+	\subsection{#1}
+	\setcounter{section}{\value{oldvalue}}
+}
+
+\setmonofont{Consolas}
+\definecolor{blve}{rgb}{0.3372549 , 0.61176471, 0.83921569}
+\definecolor{gr33n}{rgb}{0.29019608, 0.7372549 , 0.64705882}
+\makeatletter
+\lst@InstallKeywords k{class}{classstyle}\slshape{classstyle}{}ld
+\makeatother
+\lstset{language=C++,
+	basicstyle=\ttfamily,
+	keywordstyle=\color{blve}\ttfamily,
+	stringstyle=\color{red}\ttfamily,
+	commentstyle=\color{green}\ttfamily,
+	morecomment=[l][\color{magenta}]{\#},
+	classstyle = \bfseries\color{gr33n}, 
+	tabsize=4
+}
+
+
+\begin{document}
+	
+\maketitle
+\thispagestyle{firstpage}
+\thispagestyle{empty}
+\setcounter{page}{0}
+
+\pagebreak
+
+\question{2.38}
+	\Solution{}
+    \begin{enumerate}[(a)]
+        \item I pick the door $1$.\quad Monty open the door $2\sim 4$.
+	$$M_j^i = ``\text{Monty open the door}\ i\sim j"\qquad C_k = ``\text{Car is behind the}\ k^{\text{th}}\ \text{door}"$$
+	$$P(C_k) = \frac{1}{7},\quad (k = 1, 2, \dots, 7)$$
+	\begin{align*}
+\text{LOTP:}\qquad P(M^2_4) &= P(M^2_4|C_1)P(C_1)+\sum_{i = 2}^{4}P(M^2_4|C_i)P(C_i)+\sum_{i = 5}^{7}P(M^2_4|C_i)P(C_i)\\[8pt]
+&=\frac{1}{\binom{6}{3}}\cdot\frac{1}{7}+0+\frac{1}{\binom{5}{3}}\cdot\frac{1}{7}\cdot3\\[8pt]
+&=\frac{1}{20}
+\end{align*}
+\begin{align*}
+                P(C_1|M^2_4) &= \frac{P(M^2_4|C_1)P(C_1)}{P(M^2_4)} = \frac{1}{7}\\[8pt]
+                P(C_5|M^2_4) &=P(C_6|M^2_4)=P(C_7|M^2_4) = \frac{P(M^2_4|C_5)P(C_5)}{P(M^2_4)} = \frac{2}{7}>P(C_1|M^2_4)
+        \end{align*}
+        I should switch, the probability of switch to one of the remaining $3$ doors is $\frac{2}{7}$.
+
+\vspace{1cm}
+        \item I pick the door $1$.\quad Monty open the door $2\sim m+1$.
+	$$M_{m+1}^2 = ``\text{Monty open the door}\ 2\sim m+1"\qquad C_k = ``\text{Car is behind the}\ k^{\text{th}}\ \text{door}"$$
+	$$P(C_k) = \frac{1}{n},\quad (k = 1, 2, \dots, n)$$
+	\begin{align*}
+\text{LOTP:}\qquad P(M^2_{m+1}) &= P(M^2_{m+1}|C_1)P(C_1)+\sum_{i = 2}^{m+1}P(M^2_{m+1}|C_i)P(C_i)+\sum_{i = m+2}^{n}P(M^2_{m+1}|C_i)P(C_i)\\[8pt]
+&=\frac{1}{\binom{n-1}{m}}\cdot\frac{1}{n}+0+\frac{1}{\binom{n-2}{m}}\cdot\frac{1}{n}\cdot(n-m-1)\\[8pt]
+&=\frac{m!}{(n-1)(n-2)\dots(n-m)}
+\end{align*}
+\begin{align*}
+                P(C_1|M^2_{m+1}) &= \frac{P(M^2_{m+1}|C_1)P(C_1)}{P(M^2_{m+1})} = \frac{1}{n}\\[8pt]
+				P(C_i|M^2_{m+1}) &=\frac{P(M^2_{m+1}|C_i)P(C_i)}{P(M^2_{m+1})} = \frac{1}{n}\cdot\frac{n-1}{n-m-1}>P(C_1|M^2_{m+1})\quad\text{For $i = m+2, m+3\dots, n$}
+        \end{align*}
+        I should switch, the probability of switch to one of the remaining doors is $\frac{1}{n}\cdot\frac{n-1}{n-m-1}$.
+    \end{enumerate}
+		
+       
+\vspace{2cm}
+
+\pagebreak
+
+\question{2.39}
+	\Solution{}
+	\begin{enumerate}[(a)]
+		\item $$M_i = ``\text{Monty open the door}\ i"\quad C_k = ``\text{Car is behind the}\ k^{\text{th}}\ \text{door}"$$ $$P(C_k) = \frac{1}{3},\quad k = 1, 2\ \text{or}\ 3$$
+		$$P(M_2) = P(M_2|C_1)P(C_1)+P(M_2|C_2)P(C_2)+P(M_2|C_3)P(C_3) =\frac{1}{3}\cdot p + 0 + \frac{1}{3}\cdot1= \frac{p+1}{3}$$
+		$$P(M_3) = 1-P(M_2)= \frac{2-p}{3}$$
+		\begin{align*}
+			P(C_1|\text{After Monty chose}) 
+			&= P(C_1|M_2)P(M_2)+P(C_1|M_3)P(M_3)\\[8pt]
+			&= P(M_2|C_1)P(C_1)+P(M_3|C_1)P(C_1) = \frac{1}{3}\\[8pt]
+			P(\text{Win on switching}) &= 1 - P(C_1|\text{After Monty chose}) = \frac{2}{3}
+		\end{align*}\vspace{1cm}
+		\item \begin{align*}
+			P(\text{Win on switching}|M_2) = P(C_3|M_2) = \frac{P(M_2|C_3)P(C_3)}{P(M_2)} = \frac{1}{p+1}
+		\end{align*}\vspace{1cm}
+		\item \begin{align*}
+			P(\text{Win on switching}|M_3) = P(C_2|M_3) = \frac{P(M_3|C_2)P(C_2)}{P(M_3)} = \frac{1}{2-p}
+		\end{align*}
+	\end{enumerate}
+
+\pagebreak
+
+\question{2.42}
+	\Solution{}
+	\begin{enumerate}[(a)]
+		\item We can say that the running total would never be negative. So we define $p_k = 0$ for $k<0$. And it is clear that the running total reached to $0$ before the very first rolling
+		so that $p_0 = 1$. The value of $p_n$ is that the last time reached to $n - 1$ and this time got an $1$; or the last time reached to $n - 2$ and this time got a $2$, and so on.
+		So we get $$p_n = \frac{1}{6}(p_{n - 1}+p_{n - 2}+p_{n - 3}+p_{n - 4}+p_{n - 5}+p_{n - 6})\qquad n\in\mathbb{N}_+$$
+		\vspace{2cm}
+
+
+		\item \begin{align*}
+			&p_0 = 1\qquad p_1 = \frac{1}{6}\qquad p_2 = \frac{1}{6}(1+\frac{1}{6})\\[8pt]
+			&p_3 = \frac{1}{6}(1+\frac{1}{6}+\frac{1}{6}(1+\frac{1}{6}))=\frac{1}{6}(1+\frac{1}{6})^2\\[8pt]
+			&p_4 = \frac{1}{6}(1+\frac{1}{6})^3\qquad p_5 = \frac{1}{6}(1+\frac{1}{6})^4\qquad p_6 = \frac{1}{6}(1+\frac{1}{6})^5\\[8pt]
+			&p_7 = \frac{1}{6}(p_1+p_2+p_3+p_4+p_5+p_6) = \frac{1}{6}\left((1+\frac{1}{6})^6-1\right) \approx 0.2536
+		\end{align*}
+
+		\vspace{2cm}
+
+
+		\item On average, the number thrown is $\frac{1+2+3+4+5+6}{6} = \frac{7}{2}$. That means the growth speed of the running total is $3.5/\text{times}$. That means every time we roll two times, the running total goes up over $7$ numbers but we only get $2$ results during the 2 rolls.
+		
+		So the probability when $n$ is big enough is $\frac{2}{7}$
+	\end{enumerate}
+		
+\pagebreak
+
+\question{2.52}
+\Proof{}
+\begin{enumerate}[(a)]
+	\item \textbf{Impossible.} 
+	
+	If $A$ and $B$ are independent, then $P(A|B) = P(A) = P(A|B^c)$.
+	
+	$\Box$
+	\vspace{2cm}
+	\item \textbf{Impossible.} \begin{align*}
+		P(A) = P(A|C) 
+		&= P(A|B, C)P(B)+P(A|B^c, C)P(B^c)\\[8pt]
+		&< P(A|B^c, C)P(B)+P(A|B^c, C)P(B^c)\\[8pt]
+		& = P(A|B^c, C)
+	\end{align*}
+	Similarly, we have $$P(A)<P(A|B^c, C^c)$$
+	So that $$P(A)<P(A|B^c, C)P(C)+P(A|B^c, C^c)P(C^c) = P(A|B^c)$$
+	Similarly, we have $$P(A)>P(A|B)$$
+	So that $$P(A|B)<P(A|B^c)$$ $\Box$
+\vspace{2cm}
+	\item \textbf{Impossible.}\begin{align*}
+		P(A|B) 
+		&= P(A|B, C)P(C|B)+P(A|B, C^c)P(C^c|B)\\[8pt]
+		&= P(A|B, C)P(C|B^c)+P(A|B, C^c)P(C^c|B^c)\\[8pt]
+		&< P(A|B^c, C)P(C|B^c)+P(A|B^c, C^c)P(C^c|B^c)\\[8pt]
+		&= P(A|B^c)
+	\end{align*}
+
+	$\Box$
+\end{enumerate}
+
+\pagebreak
+
+\question{2.63}
+\begin{enumerate}[(a)]
+	\item \minproof{}
+	$$A_n = ``\text{Treatment $A$ is assigned on the $n^{th}$ trial}"\quad S_n = ``\text{The success on the $n^{th}$ trial}"$$
+	\begin{align*}
+		p_n &= P(S_n) = P(S_n|A_n)P(A_n)+P(S_n|A^c_n)P(A_n^c) = a\cdot a_n+b\cdot(1-a_n) = (a-b)a_n+b\\[8pt]
+		a_{n+1} &= P(A_{n+1}) = P(A_n\cap S_n)+P(A_n^c\cap S_n^c)=P(S_n|A_n)P(A_n)+P(S_n^c|A_n^c)P(A_n^c)\\[8pt]
+		&= (a+b-1)a_n+a-b
+	\end{align*}
+	$\Box$
+	\item \minproof{}
+	\begin{align*}
+		p_n=(a-b)a_n+b
+		&\Rightarrow a_n = \frac{p_n-b}{a-b}\\[8pt]
+		&\Rightarrow a_{n+1} = (a+b-1)\frac{p_n-b}{a-b}+1-b\\[8pt]
+		&\Rightarrow p_{n+1} = (a-b)a_{n+1}+b = (a-b)\left[(a+b-1)\frac{p_n-b}{a-b}+1-b\right]+b\\[8pt]
+		&\Rightarrow p_{n+1} = (a+b-1)p_n+a+b-2ab
+	\end{align*}
+	$\Box$
+	\item \minsolution{}Assume$$p = \lim_{n \to \infty} p_n = \lim_{n \to \infty} p_{n+1}$$
+	Then we get
+	\begin{align*}
+		p_{n+1} &= (a+b-1)p_n+a+b-2ab\\[8pt]
+		\Rightarrow p &= \frac{a+b-2ab}{2-a-b}
+	\end{align*}
+\end{enumerate}
+
+
+\pagebreak
+
+\question{2.64}
+\Solution{}
+\begin{enumerate}[(a)]
+	\item \begin{align*}
+		P(\text{child is $AA$}) 
+		&= P(\text{child is $AA$}|\text{parents are both $AA$})P(\text{parents are both $AA$})\\[8pt]
+		&+P(\text{child is $AA$}|\text{parents are both $Aa$})P(\text{parents are both $Aa$})\\[8pt]
+		&+P(\text{child is $AA$}|\text{parents are $AA$ and $Aa$})P(\text{parents are $AA$ and $Aa$})\\[8pt]
+		&=p^4+p^2(1-p)^2+2p^3(1-p) = p^2
+	\end{align*}
+	Similarly, $$P(\text{child is $Aa$}) = 2p(1-p)\qquad P(\text{child is $aa$}) = (1-p)^2$$
+	So that the frequencies of genotypes don't change through generations after we reaches the Hardy-Weinberg balance. So the law is stable.
+	\vspace{1cm}
+	\item $$M = ``\text{child is homozygous}"\qquad N = ``\text{parents are homozygous}"$$
+	\begin{align*}
+		P(M|N)
+		&= P(\text{parents are both $AA$}|N)+P(\text{parents are both $aa$}|N)\\[8pt]
+		&= \frac{P(N|\text{parents are both $AA$})P(\text{parents are both $AA$})}{P(N)}\\[8pt]
+		&+\frac{P(N|\text{parents are both $aa$})P(\text{parents are both $aa$})}{P(N)}\\[8pt]
+		&=\frac{P(\text{parents are both $AA$})+P(\text{parents are both $aa$})}{P(N)}\\[8pt]
+		&=\frac{p^4+(1-p)^4}{(p^2+(1-p)^2)^2}\\[8pt]
+	\end{align*}
+	\begin{align*}
+		P(\text{child is $Aa$}|\text{parents are $Aa$})= 2\cdot \frac{1}{2}\cdot\frac{1}{2} = \frac{1}{2}
+	\end{align*}
+	\pagebreak
+	\item \begin{align*}
+		&P(\text{child is heterozygous}|\text{no parent is $aa$})\\[8pt]
+		=& P(\text{child is $Aa$}|\text{no parents is $aa$})\\[8pt]
+		=& P(\text{child is $Aa$}|\text{parents are $AA$ and $Aa$})P(\text{parents are $AA$ and $Aa$})\\[8pt]
+		+& P(\text{child is $Aa$}|\text{parents are both $Aa$})P(\text{parents are both $Aa$})\\[8pt]
+		+& P(\text{child is $Aa$}|\text{parents are both $AA$})P(\text{parents are both $AA$})\\[8pt]
+		=&\frac{1}{2}\cdot2\cdot p^2\cdot2p(1-p)+\frac{1}{2}\cdot\left[2p(1-p)\right]^2+0\\[8pt]
+		=& 2p^2(1-p)\\[8pt]
+	\end{align*}
+	Similarly, 
+	\begin{align*}
+		P(\text{child is not $aa$}|\text{no parent is $aa$}) = p^2(3-2p)\\[8pt]
+	\end{align*}
+	\begin{align*}
+		&P(\text{child is heterozygous}|\text{no parent is $aa$},\text{child is not $aa$})\\[8pt]
+		=&\frac{P(\text{child is not $aa$}|\text{child is heterozygous}, \text{no parent is $aa$})P(\text{child is heterozygous}|\text{no parent is $aa$})}{P(\text{child is not $aa$}|\text{no parent is $aa$})}\\[8pt]
+		=&\frac{P(\text{child is heterozygous}|\text{no parent is $aa$})}{P(\text{child is not $aa$}|\text{no parent is $aa$})}\\[8pt]
+		=&\frac{2-2p}{3-2p}
+	\end{align*}
+\end{enumerate}
+\end{document}

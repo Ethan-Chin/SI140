@@ -1,0 +1,112 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"terminal.integrated.shell.osx": "/bin/zsh",
+		"latex-workshop.latex.autoBuild.run": "onFileChange",
+		"latex-workshop.latex.recipes": [
+
+			{
+				"name": "latexmk",
+				"tools": [
+					"latexmk"
+				]
+			},
+			// {
+			// 	"name": "pdflatex ➞ bibtex ➞ pdflatex × 2",
+			// 	"tools": [
+			// 		"pdflatex",
+			// 		"bibtex",
+			// 		"pdflatex",
+			// 		"pdflatex"
+			// 	]
+			// },
+		],
+		"latex-workshop.view.pdf.viewer": "tab",
+		"latex-workshop.latex.autoClean.run": "onBuilt",
+		"latex-workshop.latex.tools": [
+
+			{
+				"name": "latexmk",
+				"command": "latexmk",
+				"args": [
+					"-xelatex",
+					"-synctex=1",
+					"-interaction=nonstopmode",
+					"-file-line-error",
+					//"-pdf",
+					"-outdir=%OUTDIR%",
+					"%DOC%"
+				],
+				"env": {}
+			},
+
+			// {
+			// 	"name": "pdflatex",
+			// 	"command": "pdflatex",
+			// 	"args": [
+			// 		"-synctex=1",
+			// 		"-interaction=nonstopmode",
+			// 		"-file-line-error",
+			// 		"%DOC%"
+			// 	],
+			// 	"env": {}
+			// },
+			// {
+			// 	"name": "bibtex",
+			// 	"command": "bibtex",
+			// 	"args": [
+			// 		"%DOCFILE%"
+			// 	],
+			// 	"env": {}
+			// },
+			// {
+			// 	"name": "rnw2tex",
+			// 	"command": "Rscript",
+			// 	"args": [
+			// 		"-e",
+			// 		"knitr::opts_knit$set(concordance = TRUE); knitr::knit('%DOCFILE_EXT%')"
+			// 	],
+			// 	"env": {}
+			// },
+			// {
+			// 	"name": "jnw2tex",
+			// 	"command": "julia",
+			// 	"args": [
+			// 		"-e",
+			// 		"using Weave; weave(\"%DOC_EXT%\", doctype=\"tex\")"
+			// 	],
+			// 	"env": {}
+			// },
+			// {
+			// 	"name": "jnw2texmintex",
+			// 	"command": "julia",
+			// 	"args": [
+			// 		"-e",
+			// 		"using Weave; weave(\"%DOC_EXT%\", doctype=\"texminted\")"
+			// 	],
+			// 	"env": {}
+			// },
+			// {
+			// 	"name": "tectonic",
+			// 	"command": "tectonic",
+			// 	"args": [
+			// 		"--synctex",
+			// 		"--keep-logs",
+			// 		"%DOC%.tex"
+			// 	],
+			// 	"env": {}
+			// }
+		],
+		"latex-workshop.chktex.delay": 100,
+		"latex-workshop.intellisense.update.delay": 100,
+		"latex-workshop.latex.pdfWatch.delay": 10,
+		"latex-workshop.latex.watch.delay": 10,
+		"latex-workshop.latex.autoBuild.interval": 100,
+		"latex-workshop.message.warning.show": false,
+		"latex-workshop.message.error.show": false
+	}
+}

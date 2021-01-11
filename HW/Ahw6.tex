@@ -1,0 +1,411 @@
+\documentclass[10.5pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{amsfonts,bm}
+\usepackage{listings}
+\usepackage{graphicx}
+\usepackage[shortlabels]{enumitem}
+\usepackage{tikz}
+\usepackage{extramarks}
+%\usepackage{enumerate}
+\usepackage[margin=1in]{geometry}
+\usepackage{fancyhdr}
+\usepackage{epsfig}
+\usepackage{amsmath}
+\usepackage{float}
+\usepackage{amssymb}
+\usepackage{caption}
+\usepackage{subfigure}
+\usepackage{graphics}
+\usepackage{titlesec}
+\usepackage{mathrsfs}
+\usepackage{amsfonts}
+\usepackage{indentfirst}
+\usepackage{fontspec}
+\usepackage{dashrule}
+\usepackage{ctex}
+\usepackage{algpseudocode}
+%\usepackage{algorithm}
+
+\renewcommand{\baselinestretch}{1.2}
+
+\usepackage{tikz-qtree}
+\usetikzlibrary{graphs}
+\tikzset{every tree node/.style={minimum width=2em,draw,circle},
+	blank/.style={draw=none},
+	edge from parent/.style=
+	{draw,edge from parent path={(\tikzparentnode) -- (\tikzchildnode)}},
+	level distance=1.2cm} 
+\setlength{\parindent}{0pt}
+\setlength{\headheight}{13.6pt}
+\newcommand\question[1]{\vspace{.2in}\hrule\vspace{0.04in}\textbf{Problem\ #1}\vspace{.4em}\hrule\vspace{.10in}}
+\newcommand\Solution{\vspace{.3in}\textbf{Solution:}\vspace{.5em}\hrule\vspace{.08in}\par}
+\newcommand\Answer{\vspace{.2in}\textbf{Answer:}\vspace{.5em}\hrule\vspace{.08in}\par}
+\newcommand\Proof{\vspace{.3in}\textbf{Proof:}\vspace{.5em}\hrule\vspace{.08in}\par}
+\newcommand\minsolution{\vspace{.3in}\textbf{Solution:}\vspace{.4em}\par}
+\newcommand\minanswer{\vspace{.2in}\textbf{Answer:}\vspace{.4em}\par}
+\newcommand\minproof{\vspace{.3in}\textbf{Proof:}\vspace{.4em}\par}
+\renewcommand\part[1]{\vspace{.10in}\textbf{(#1)}}
+\newcommand\algorithm{\vspace{.10in}\textbf{Algorithm: }}
+\newcommand\correctness{\vspace{.10in}\textbf{Correctness: }}
+\newcommand\runtime{\vspace{.10in}\textbf{Running time: }}
+\pagestyle{fancyplain}
+
+\setCJKfamilyfont{Song}[AutoFakeBold]{SimSun}
+\newcommand*{\Song}{\CJKfamily{Song}}
+
+
+
+
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}}
+
+\title{
+	\normalfont \normalsize
+	\begin{figure}[!h]
+	\centering
+	\includegraphics[width=4.8in, keepaspectratio]{logo_red.pdf}\\[1cm]
+		%\caption{}
+	\end{figure}
+	%\huge{\textsc{ShanghaiTech University}} \\ [8pt]
+	\horrule{0.5pt} \\[0.4cm]
+	\Huge SI140 Probability \& Mathematical Statistics\\[0.4cm]
+	\LARGE Homework 6\\
+	\horrule{2pt} \\[1.5cm]
+}
+
+\author{\Song{\huge\textbf{陈昱聪}}\\[0.2cm]Chen Yucong\ ><E<>N\\[4.5cm]\textbf{Student ID: 2019533079}\\[0.2cm] 
+\textbf{Email:}\ {\ttfamily chenyc@shanghaitech.edu.cn}\\[0.8cm] \LARGE\textsc{School of Information Science and Technology}\\[0.63cm]
+\texttt{$\circledcirc$ Group\#2\ (TA:曾理)}}
+\date{}
+
+
+\pagestyle{fancy}
+\lhead{SI140 Probability \& Mathematical Statistics}
+\chead{\textbf{Homework 6\ }}
+\rhead{陈昱聪\,2019533079\ \,Due:\,11:59\,am, $02^{\text{nd}}$ Nov.}
+\cfoot{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+
+
+\fancypagestyle{firstpage}
+{
+	\renewcommand{\headrulewidth}{0pt}
+	\fancyhf{}
+	\fancyfoot[C]{\thepage}
+}
+
+
+\newcounter{ProblemCounter}
+\newcounter{oldvalue}
+\newcommand{\problem}[2][-1]{
+	\setcounter{oldvalue}{\value{secnumdepth}}
+	\setcounter{secnumdepth}{0}
+	\ifnum#1>-1
+	\setcounter{ProblemCounter}{0}
+	\else
+	\stepcounter{ProblemCounter}
+	\fi
+	\section{Problem \arabic{ProblemCounter}: #2}
+	\setcounter{secnumdepth}{\value{oldvalue}}
+}
+\newcommand{\subproblem}[1]{
+	\setcounter{oldvalue}{\value{section}}
+	\setcounter{section}{\value{ProblemCounter}}
+	\subsection{#1}
+	\setcounter{section}{\value{oldvalue}}
+}
+
+\setmonofont{Consolas}
+\definecolor{blve}{rgb}{0.3372549 , 0.61176471, 0.83921569}
+\definecolor{gr33n}{rgb}{0.29019608, 0.7372549 , 0.64705882}
+\makeatletter
+\lst@InstallKeywords k{class}{classstyle}\slshape{classstyle}{}ld
+\makeatother
+\lstset{language=C++,
+	basicstyle=\ttfamily,
+	keywordstyle=\color{blve}\ttfamily,
+	stringstyle=\color{red}\ttfamily,
+	commentstyle=\color{green}\ttfamily,
+	morecomment=[l][\color{magenta}]{\#},
+	classstyle = \bfseries\color{gr33n}, 
+	tabsize=4
+}
+
+
+\begin{document}
+	
+\maketitle
+\thispagestyle{firstpage}
+\thispagestyle{empty}
+\setcounter{page}{0}
+
+\pagebreak
+
+\question{4.20}
+	\Solution{}
+	\begin{enumerate}[(a)]
+		\item Since we can say that $V+W\equiv X+Y$, we have:
+		\begin{align*}
+			E(V)+E(W) = E(V+W) = E(X+Y) = E(X)+E(Y) = \frac{n}{2}+\frac{n+1}{2} = n+\frac{1}{2}
+		\end{align*}\vspace{1cm}
+		\item Since $p = \frac{1}{2}$, we can find the symmetry between the number of successes and the number of failures.
+		
+		That is $p = q = \frac{1}{2}$, so $n - X\sim \text{Bin}(n,q) = \text{Bin}(n,\frac{1}{2})$, $n + 1 - Y\sim \text{Bin}(n+1,q) = \text{Bin}(n+1,\frac{1}{2})$.
+
+		That means the distributions of $X$ and $n - X$ are identical, and so are the distributions of $Y$ and $n+1-Y$, while $X$ and $Y$ are independent.
+
+		So we have $P(X<Y) = P(n - X < n+1-Y)$.\vspace{1cm}
+		\item Using (b) we know \begin{align*}
+			P(X<Y) &= P(n - X<n+1-Y)\\[6pt]
+			&=P(Y<X+1)\\[6pt]
+			&=P(Y\leqslant X)\quad(\text{Since X and Y are integer-valued})\\[6pt]
+			&=1-P(X<Y)
+		\end{align*}
+		So that $P(X<Y) = \frac{1}{2}$
+
+
+	\end{enumerate}
+   
+
+\pagebreak
+
+\question{4.25}
+	\Solution{}
+	\begin{enumerate}[(a)]
+		\item In the $k^{\text{th}}$ trial, $P(X_k = Y_k = 1) = p_1p_2$.
+		So that $n\sim\text{FS}(p_1p_2)$, which means $E(n) = \frac{1}{p_1p_2}$.\vspace{1cm}
+		\item That is, in $k^{\text{th}}$ trail $X_kY_k = 1$, we get $P(X_kY_k = 1) = (1-p_1)(1-p_2)$. So that\\
+		$n\sim\text{FS}((1-p_1)(1-p_2))$, which means $E(n) = \frac{1}{(1-p_1)(1-p_2)}$.\vspace{1cm}
+		\item This case is that there are several times (could be $0$ to $\infty$) where they are both failed.
+		So \begin{align*}
+			P(\text{Their first successes are simultaneous}) 
+			&= p_1p_2\sum_{k = 0}^{\infty}\left[(1-p_1)(1-p_2)\right]^k\\[6pt]
+			&=p_1^2\lim_{k\to\infty}\frac{1-(1-p_1)^{2k}}{1-(1-p_1)^2}\\[6pt]
+			&=\frac{p_1}{2-p_1}
+		\end{align*}
+		By using symmetry, the probability of Nick's preceding equals to the probability of Penny's preceding.
+		So we have\begin{align*}
+			P(\text{Nick's preceding}) = \frac{1-\frac{p_1}{2-p_1}}{2} = \frac{1-p_1}{2-p_1}
+		\end{align*}
+	\end{enumerate}
+
+\pagebreak
+
+\question{4.27}
+	\Solution{}
+	\begin{enumerate}[(a)]
+		\item \begin{align*}
+			E(Xg(X)) = \sum_{k = 0}^{\infty}kg(k)P(X=k) 
+			&= \sum_{k = 0}^{\infty}kg(k)\frac{e^{-\lambda}\lambda^k}{k!}\\[6pt]
+			&= \sum_{k = 1}^{\infty}kg(k)\frac{e^{-\lambda}\lambda^k}{k!}\\[6pt]
+			&= \lambda\sum_{k = 1}^{\infty}g(k)\frac{e^{-\lambda}\lambda^{k-1}}{(k-1)!}\\[6pt]
+			&= \lambda\sum_{k = 0}^{\infty}g(k+1)\frac{e^{-\lambda}\lambda^{k}}{k!}\\[6pt]
+			&= \lambda\sum_{k = 0}^{\infty}g(k+1)P(X=k)\\[6pt]
+			&= \lambda E(g(X+1))
+		\end{align*}\vspace{1cm}
+		\item Let $g(X) = X^2$, by using $E(X) = \lambda$ and $E(X^2) - E^2(X) = \lambda$, we know that\begin{align*}
+		E(X^3)
+		&= E(X\cdot X^2)\\[6pt]
+		&= \lambda E(X^2+2X+1)\\[6pt]
+		&= \lambda E(X^2)+2\lambda E(X)+\lambda\\[6pt]
+		&=\lambda(\lambda + E^2(X))+2\lambda E(X)+\lambda\\[6pt]
+		& = \lambda(\lambda + \lambda^2)+2\lambda^2+\lambda\\[6pt]
+		& =\lambda^3+3\lambda^2+\lambda
+		\end{align*}
+		
+	\end{enumerate}
+	
+	
+
+\pagebreak
+
+\question{4.38}
+\Solution{}
+Let \begin{equation*}
+	I_i = \begin{cases}
+		&1\quad(\text{The $i^{\text{th}}$ type of toys is collected.})\\[6pt]
+		&0\quad(\text{The $i^{\text{th}}$ type of toys is not collected.})\\
+	\end{cases}
+\end{equation*}
+So the expected number of distinct toy types can be caculated as follows:
+\begin{align*}
+	E\left(\sum_{i = 1}^n I_i\right) = \sum_{i = 1}^n E(I_i) = nE(I_i) = nE(I_1)
+\end{align*}
+By using Bose-Einstein Counting, We know\begin{align*}
+	E(I_1) 
+	&= P(\text{The $1^{\text{st}}$ type of toys is collected.})\\[6pt]
+	&=1- P(\text{The $1^{\text{st}}$ type of toys is not collected.})\\[6pt]
+	&=1-\frac{\binom{n + t - 2}{n-2}}{\binom{n + t - 1}{n-1}}\\[6pt]
+	&=\frac{t}{n+t-1}\\[12pt]
+\end{align*}
+So the expectation is: $$\frac{nt}{n+t-1}$$
+\pagebreak
+
+\question{4.44}
+\Solution{}
+\begin{enumerate}[(a)]
+	\item It means the expected number of pairs of both $w$ in those $n$ objects.
+	So \begin{align*}
+		E\binom{X}{2} = \binom{n}{2}\frac{w}{w+b}\, \frac{w-1}{w+b-1}
+	\end{align*}
+	\item By using (a), \begin{align*}
+		&E\binom{X}{2} = \frac{1}{2}E(X(X-1)) 
+		= \frac{1}{2}(E(X^2) - E(X)) = \binom{n}{2}\frac{w}{w+b}\, \frac{w-1}{w+b-1}\\[10pt]
+		&\Rightarrow E(X^2) - X(X) = n(n - 1)p\frac{w-1}{N-1},\quad\text{while}\ E(X) = np
+	\end{align*}
+	\begin{align*}
+		V(X) 
+		&= E(X^2) - E^2(X)\\[6pt]
+		&=n(n - 1)p\frac{w - 1}{N-1}+np-n^2p^2\\[6pt]
+		&=\frac{N-n}{N-1}npq
+	\end{align*}
+\end{enumerate}
+
+\vspace{3cm}
+
+\question{4.48}
+\Solution{}
+Let \begin{equation*}
+	I_i = \begin{cases}
+		&1\quad(\text{The $i^{\text{th}}$ toss is diffetent from the $(i - 1)^{\text{th}}$.})\\[6pt]
+		&0\quad(\text{The $i^{\text{th}}$ toss is the same as the $(i - 1)^{\text{th}}$.})\\
+	\end{cases}
+\end{equation*}
+Where $i = 2, 3, 4, \dots, n$.
+
+So the expected \#runs is:
+\begin{align*}
+	E(1+\sum_{i = 2}^n I_i) = 1 + \sum_{i = 2}^n E(I_i) = 1+\sum_{i = 2}^n P(I_i = 1) = 1+2(n-1)p(1-p)
+\end{align*}
+
+\pagebreak
+
+\question{4.54}
+\Solution{}
+\begin{enumerate}[(a)]
+	\item With respect to CDF of the birthday problem, $P(X \leqslant 23) = 50.7\%$, so that $P(X \leqslant 24) > \frac{1}{2}$ since 
+	with the increase of $X$, CDF is absolutely monotonous. And we know $P(X \leqslant 22) = \frac{1}{2}$, 
+	$P(X\geqslant23) = 1-P(X<22)>\frac{1}{2}$. So $23$ is the median while $22$ and $24$ are not. And since the CDF is monotonous so we know
+	if we have multiple medians, they should be in together. So the $23$ is the unique median.\vspace{0.5cm}
+	\item From the description, we found that \begin{align*}
+		E(I_j) = P(I_j = 1) = P(X\geqslant j) = p_j
+	\end{align*}
+	And after basic analysis we found the expression of $p_j$ as defined in this Question.
+	Using the equation we found above, $$E(X) = \sum_{j = 1}^{366}E(I_J) = \sum_{j = 1}^{366}p_j$$
+	\vspace{0.5cm}
+	\item $E(X) = 24.6166$ by using Python code. (See the Appendix)
+	\vspace{0.5cm}
+\item Since $i < j$ in that equation so that if $I_j = 1$ then $I_i = 1$ for sure. Now that we want $I_iI_j = 1$, that means $I_j = 1$.\begin{align*}
+	E(X^2) = \sum_{j = 1}^{366}E(I_j^2)+2\sum_{j = 2}^{366}\sum_{i = 1}^{j - 1}(1\cdot I_j)
+	=\sum_{j = 1}^{366}E(I_j)+2\sum_{j = 2}^{366}((j - 1)\cdot I_j) = \sum_{j = 1}^{366}p_j+2\sum_{j = 2}^{366}(j - 1)p_j
+\end{align*}
+\begin{align*}
+	V(X) = E(X^2) - E^2(X) = \sum_{j = 1}^{366}p_j+2\sum_{j = 2}^{366}(j - 1)p_j - \left(\sum_{j = 1}^{366}p_j\right)^2 = 148.6403\quad\text{(See the Appendix)}
+\end{align*}
+\end{enumerate}
+\textbf{APPENDIX (Code With Python)}:
+\begin{lstlisting}[language = Python]
+	Ex = 2
+	Vx = 1
+	p = [1]*366
+
+	for j in range(2, 366):
+		p[j] = p[j-1]*(1-(j - 1)/365)
+		Ex += p[j]
+		Vx += j*p[j]
+	Vx = Ex - Ex**2 + 2*Vx
+	
+	print("Ex = ", Ex, "Vx = ", Vx)
+\end{lstlisting}
+\pagebreak
+
+
+\question{4.61}
+\Solution{}
+\begin{enumerate}[(a)]
+	\item Biased.
+	\begin{align*}
+		E(T) - \theta
+		&=\sum_{k = 0}^{\infty} e^{-3k}\frac{e^{-\lambda}\lambda^k}{k!} - e^{-3\lambda}\\[6pt]
+		&=e^{-\lambda}\sum_{k = 0}^{\infty} \frac{e^{-3k}\lambda^k}{k!}- e^{-3\lambda}\\[6pt]
+		&=e^{-\lambda}\sum_{k = 0}^{\infty} \frac{(e^{-3}\lambda)^k}{k!}- e^{-3\lambda}\\[6pt]
+		&=e^{-\lambda}e^{(e^{-3}\lambda)}-e^{-3\lambda}\neq0
+	\end{align*}
+	\vspace{1cm}
+	\item \begin{align*}
+		E(g(X)) - \theta
+		&=\sum_{k = 0}^{\infty} (-2)^k\frac{e^{-\lambda}\lambda^k}{k!} - e^{-3\lambda}\\[6pt]
+		&=e^{-\lambda}\sum_{k = 0}^{\infty} \frac{(-2)^k\lambda^k}{k!}- e^{-3\lambda}\\[6pt]
+		&=e^{-\lambda}\sum_{k = 0}^{\infty} \frac{(-2\lambda)^k}{k!}- e^{-3\lambda}\\[6pt]
+		&=e^{-\lambda}e^{-2\lambda}-e^{-3\lambda}=0
+	\end{align*}
+	\vspace{1cm}
+	\item Beacuse $(-2)^X$ is sometimes negative while $\theta$ is always positive. Let
+	\begin{equation*}
+		h(X) = 
+		\begin{cases}
+			& 0\, ,\quad\ \ \quad\text{X is odd}\\
+			& g(X)\, ,\quad\text{X is even}
+		\end{cases}
+	\end{equation*}
+	Since $\theta$ is positive so using $0$ to estimating is better in the part where $g(x)$ is negative.
+
+	So we get $|h(X)-\theta|\leqslant|g(X)-\theta|$
+\end{enumerate}
+
+
+
+\pagebreak
+
+\question{4.63}
+\Solution{}
+\begin{enumerate}[(a)]
+	\item Let $I_j$ be the indicator for whether the $j^{th}$ guy picking his own name. Then, 
+	$$E(X) = E\left(\sum_{j = 1}^n I_j\right) = \sum_{j = 1}^nE(I_J) = n\cdot\frac{1}{n} = 1$$\vspace{1cm}
+	\item There are $\binom{n}{2} = \frac{n(n-1)}{2}$ pairs, and for two guys we got the probability $p = \frac{1}{n(n-1)}$ that
+	they pick each other's name. So the expectation is $\frac{n(n-1)}{2}\cdot\frac{1}{n(n-1)} = \frac{1}{2}$\vspace{1cm}
+	\item As we know the expectation is $1$, we would construct the distribution as $X\sim\text{Pois}(1)$ with $\lambda = 1$. As $n\to\infty$, 
+	$P(X = 0)\to \frac{e^{-\lambda}\lambda^0}{0!} = \frac{1}{e}$\vspace{1cm}
+\end{enumerate}
+
+\vspace{2cm}
+
+\question{4.72}
+\Proof{}
+Using probability to solve this problem. We can generate $m$ arbitrary strings with length $n$ to check if the probability of $k$-complete is positive. If so, we can say that there exists a $k$-complete set of size $m$.
+
+Let $N = \binom{n}{k}2^k$, and let $A_j$ be the event that S contains the $i^{text{th}}$ string as the question described. Then using the theorem we have:
+
+$$P\left(\bigcup_{j = 1}^N A_j^c\right)\leqslant\sum_{j = 1}^N P(A_j^c) = \binom{n}{k}2^k(1-2^{-k})^m<1$$
+
+$$\Rightarrow P\left(\bigcap_{j = 1}^N A_j\right)>0$$ $\Box$
+
+\pagebreak
+\question{4.83}
+\Solution{}
+\begin{enumerate}[(a)]
+	\item After exploration phase, the sum of the ranks is $k\cdot\frac{n+1}{2}$ since the expectation of a rank with randomly choice from $n$ dishes is the population mean that $\frac{n+1}{2}$.
+	
+	In exploitation phase we always order the best dish for $m-k$ times. Let $Y$ be the sum after all. So after all we have the expected sum:
+	$$E(Y) = k\,\frac{n+1}{2}+(m-k)E(X)$$
+	\vspace{0.5cm}
+	\item The total number of ways in odering is $\binom{n}{k}$. The number of odering ways while $X = j$ is $\binom{k-1}{j-1}$ since once we have the largest rank, the rest that $k - 1$ ranks could only be chosen in which is less than the largest one.
+	So we have the PMF $$P(X = j) = \frac{\binom{k - 1}{j - 1}}{\binom{n}{k}}$$
+	\vspace{0.5cm}
+	\item We know that $X\in\{k, k+1, \dots, n\}$ since it is the max in $k$ orders.\begin{align*}
+		&E(X) = \sum_{j = k}^n j P(X=j) = \sum_{j = k}^n \frac{\binom{k - 1}{j - 1}}{\binom{n}{k}} = \sum_{j = k}^n j \frac{\frac{(j - 1)!}{(j - k)!(k - 1)!}}{\frac{n!}{(n - k)!k!}}\\[6pt]
+		&= \frac{(k+1)!(n - k)!}{n!}\sum_{j = k}^n\frac{j!}{(j - k)!k!} = \frac{(k+1)!(n - k)!}{n!}\sum_{j = k}^n\binom{j}{k}\\[6pt]
+		&= \frac{(k+1)!(n - k)!}{n!}\binom{n+1}{k+1}\quad(\text{Using the hockey stick identity})\\[6pt]
+		&= \frac{k(n+1)}{k+1}
+	\end{align*}\vspace{0.5cm}
+	\item $$E(Y) = k\,\frac{n+1}{2}+(m-k)E(X) = k\,\frac{n+1}{2}+(m-k)\frac{k(n+1)}{k+1}\\[6pt]$$
+	Get the maximum value where the derivative is zero:
+
+	\begin{align*}
+		\frac{\mathrm{d} E(Y)}{\mathrm{d} k}\bigg|_{k_0} &= \frac{n+1}{2}-\frac{(2 k_0 + k_0^2 - m)(1 + n)}{(1 + k_0)^2} = 0\\[8pt]
+		\Rightarrow k_0 &= \sqrt{2(m+1)}-1
+	\end{align*}
+\end{enumerate}
+
+
+
+\end{document}
